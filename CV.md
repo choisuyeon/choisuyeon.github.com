@@ -1,6 +1,6 @@
 ---
-title: Reading List
-subtitle: a list of books I read
+title: CV
+subtitle: my curriculum vitae
 layout: "page"
 icon: fa-book
 order: 3
