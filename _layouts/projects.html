@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{%- assign _posts = site.posts | sort: 'date' | reverse -%}
+{%- include header.html scrolly_nav=_posts -%}
+<!-- Main -->
+<div id="main">
+	{%- if page.content != "" -%}
+	<article class="shade-two">
+		<div class="container">
+			<header>
+				<h2>{{- page.title -}}</h2>
+				{%- if page.subtitle -%}<p>{{- page.subtitle -}}</p>{%- endif -%}
+			</header>
+			{{- content -}}
+		</div>
+	</article>
+	{%- endif -%}
+	<!-- Posts List -->
+	{%- for _post in _posts -%}
+		{%- capture _title -%}
+			<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
+		{%- endcapture -%}
+		{%- capture _subtitle -%}
+			{{- _post.subtitle -}}
+		{%- endcapture -%}
+		{%- assign _content = _excerpt | append: _link -%}
+		{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+	{%- endfor -%}
+</div>

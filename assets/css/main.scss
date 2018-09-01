@@ -2,3 +2,38 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @import "jekyll-theme-prologue";
+
+header {
+  color: black;
+}
+
+h1, h2, h3, h4, strong {
+  color: black;
+}
+
+body {
+  font: 15px/1.4 sans-serif;
+  color: black;
+}
+
+a {
+  color : #004563;
+}
+
+a.aboutme {
+  font-weight: bold;
+}
+b {
+  font-weight: bold;
+}
+
+name-bold {
+  font: 30px/1.4 sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+small {
+  font: 14px/1.4 sans-serif;
+  color: black;
+}

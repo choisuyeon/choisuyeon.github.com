@@ -134,7 +134,7 @@
 		outline: 0;
 
 		&:hover {
-			color: #E27689;
+			color: #0098DA;
 			border-bottom-color: rgba(255, 255, 255, 0);
 		}
 	}
@@ -386,15 +386,27 @@
 	}
 
 /* Table */
+	div.table-wrapper{
+		table{
+					thead tr th:first-child,
+					tbody tr td:first-child {
+					  width: 10em;
+					  min-width: 10em;
+					  max-width: 10em;
+					}
+		}
+
+	}
 
 	table {
 		width: 100%;
 		text-align: left;
+		font: 14px/1.0 sans-serif;
 
 		tbody {
 			tr {
 				&:nth-child(2n+2) {
-					background: #f4f4f4;
+					#background: #ffffff;
 				}
 			}
 		}
@@ -600,7 +612,7 @@
 						color: #fff;
 
 						span::before {
-							color: #e27689;
+							color: #0098DA;
 						}
 					}
 				}
