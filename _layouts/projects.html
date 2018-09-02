@@ -6,10 +6,10 @@ layout: default
 <!-- Main -->
 <div id="main">
 	{%- if page.content != "" -%}
-	<article class="shade-two">
+	<article class="shade-three">
 		<div class="container">
 			<header>
-				<h2> Projects </h2>
+				<name-bold><h2> Projects </h2></name-bold>
 				<!--<h2>{{- page.title -}}</h2>-->
 			</header>
 			{{- content -}}
@@ -27,17 +27,29 @@ layout: default
 				</div>
 				{%- endcapture -%}
 				{%- capture _subtitle -%}
-				<div align=left>
-					<h3> {{- _post.subtitle -}} </h3>
+				<div class="row" align=left>
+					<div class="3u 12u$(mobile)" align="left">
+						<a href="{{- _post.url | absolute_url -}}" class="image fit">
+							<img src="{{- _post.thumbnail_url | relative_url -}}" alt="thumbnail"
+									 style="border-radius:10px;
+									 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  />
+						</a>
+					</div>
+				  <div class="9u 12u$(mobile)" align="left">
+							<h3> {{- _post.subtitle -}} </h3>
+							<br>
+							<p>{{- _post.summary | strip_html | truncatewords: 100 -}}</p>
+					</div>
 				</div>
 				{%- endcapture -%}
 
 				{%- capture _excerpt -%}
-				{{- _post.content -}}
 				{%- endcapture -%}
 
 				{%- capture _link -%}
-					<!-- <a href="{{- _post.url | absolute_url -}}">See Details</a> -->
+				<div align=right>
+					<a href="{{- _post.url | absolute_url -}}">See More Details</a>
+				</div>
 				{%- endcapture -%}
 
 				{%- assign _content = _excerpt | append: _link -%}
