@@ -9,8 +9,8 @@ layout: default
 	<article class="shade-two">
 		<div class="container">
 			<header>
-				<h2>{{- page.title -}}</h2>
-				{%- if page.subtitle -%}<p>{{- page.subtitle -}}</p>{%- endif -%}
+				<h2> Projects </h2>
+				<!--<h2>{{- page.title -}}</h2>-->
 			</header>
 			{{- content -}}
 		</div>
@@ -18,13 +18,30 @@ layout: default
 	{%- endif -%}
 	<!-- Posts List -->
 	{%- for _post in _posts -%}
-		{%- capture _title -%}
-			<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
-		{%- endcapture -%}
-		{%- capture _subtitle -%}
-			{{- _post.subtitle -}}
-		{%- endcapture -%}
-		{%- assign _content = _excerpt | append: _link -%}
-		{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+
+				{%- capture _title -%}
+				<div align=left>
+					<name-bold>
+						<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
+					</name-bold>
+				</div>
+				{%- endcapture -%}
+				{%- capture _subtitle -%}
+				<div align=left>
+					<h3> {{- _post.subtitle -}} </h3>
+				</div>
+				{%- endcapture -%}
+
+				{%- capture _excerpt -%}
+				{{- _post.content -}}
+				{%- endcapture -%}
+
+				{%- capture _link -%}
+					<!-- <a href="{{- _post.url | absolute_url -}}">See Details</a> -->
+				{%- endcapture -%}
+
+				{%- assign _content = _excerpt | append: _link -%}
+				{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+
 	{%- endfor -%}
 </div>
