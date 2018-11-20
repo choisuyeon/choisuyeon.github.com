@@ -1,8 +1,8 @@
 ---
 layout: default
-category: projects
+category: "side_projects"
 ---
-{%- assign _posts = site.categories.projects | sort: 'date' | reverse -%}
+{%- assign _posts = site.categories.side_projects | sort: 'date' | reverse -%}
 {%- include header.html scrolly_nav=_posts -%}
 <!-- Main -->
 <div id="main">
@@ -10,7 +10,7 @@ category: projects
 	<article class="shade-three">
 		<div class="container">
 			<header>
-				<name-bold> Project Highlights </name-bold>
+				<name-bold> Side Projects </name-bold> <font size=4>(toy projects, class projects, high-school projects)</font>
 				<!--<h2>{{- page.title -}}</h2>-->
 			</header>
 			{{- content -}}
@@ -55,6 +55,7 @@ category: projects
 
 				{%- assign _content = _excerpt | append: _link -%}
 				{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+
 
 	{%- endfor -%}
 </div>
