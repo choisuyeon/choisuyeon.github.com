@@ -33,10 +33,8 @@
 title: Suyeon Choi
 subtitle: Seoul National University
 description: >- # this means to ignore newlines until "baseurl:"
-  This is the demo site for a Jekyll theme version of
-  HTML5 UP's sleek, responsive site template Prologue.
 author: Suyeon Choi
-email: 0310csy@hanmail.net
+email: suyn.choi@gmail.com
 avatar: "assets/images/avatar.jpg"
 
 # You'll want to customize url and baseurl for your own site:
