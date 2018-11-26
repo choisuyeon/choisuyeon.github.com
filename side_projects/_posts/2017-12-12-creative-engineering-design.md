@@ -13,8 +13,8 @@ summary: While taking Creative Engineering Design course in 2017, I studied the 
 <div class="row border-top" >
   <div class="6u 12u$(mobile) padding10 padding-right20 border-right" align="left">
     <h3>SUMMARY</h3>
-      TBU.
-      However, you can see my reports below, <font style="font-style:italic;">though it is in <b>Korean</b>..:(</font>
+      It will be updated soon! <span class="fa fa-frown-open"></span><br>
+      However, you can see my reports below, <font style="font-style:italic;">though it is in <b>Korean</b>..<span class="fa fa-sad-cry"></span></font>
       <br>
       <br>
       attached file : <a href="assets/files/reports_CED_Suyeon_Choi.pdf">[pdf, Korean]</a>
@@ -22,7 +22,7 @@ summary: While taking Creative Engineering Design course in 2017, I studied the 
       <br>
       <hr class="color">
       <br>
-      <h3>References</h3>
+      <h3>REFERENCES</h3>
       [1] Nanfang Yu, Patrice Genevet, Mikhail A. Kats, Francesco Aieta, Jean-Philippe Tetienne, Federico Capasso, Zeno Gaburro, “Light propagation with phase discontinuities: Generalized laws of reflection and refraction,” Science, 334, 333-337 (2011). <br>
       [2] Lingling Huang et al. “Dispersionless Phase Discontinuities for Controlling Light Propagation,” Nano letters, 12, 5750-5755 (2012). <br>
       [3] Amir Arbabi, Yu Horie, Mahmood Bagheri and Andrei Faraon, “Dielectric metasurfaces for complete control of phase and polarization with subwavelength spatial resolution and high transmission,” Nature nano, 10, 937-943 (2015). <br>

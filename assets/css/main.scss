@@ -55,11 +55,13 @@ div.padding20 {
 div.padding-left20 {
   padding-top : 20px;
   padding-left : 20px;
+  padding-bottom : 20px;
   text-align:justify
 }
 div.padding-right20 {
   padding-top : 20px;
   padding-right : 20px;
+  padding-bottom : 20px;
   text-align:justify
 }
 hr.color {
@@ -81,4 +83,8 @@ div.border-right {
 
 div.border-left {
   border-left: 1px solid #CED5DB; height: auto;
+}
+
+div.margin0 {
+  margin : 0px;
 }

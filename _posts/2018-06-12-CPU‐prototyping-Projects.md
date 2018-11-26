@@ -19,7 +19,7 @@ summary: I got handful experiences on how to make a real CPU from my Computer Or
       • Cache<br>
       • DMA<br>
       <br>
-      This is available on my github
+      All codes are available on my github.
       <a href="https://github.com/choisuyeon/SNU_CO_project-2018-spring"> <span class="icon-b fa-github"></span></a>
       <br>
       <br>
