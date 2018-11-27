@@ -2,7 +2,7 @@
 title: Holographic Metasurface | 2017
 title_long: Holographic Metasurface | 2017
 subtitle: Research experience on Metasurfaces
-author: Suyeon Choi
+author: 
 layout: project
 icon: fa-book
 thumbnail_url: /assets/images/CED/thumbnail2.png
