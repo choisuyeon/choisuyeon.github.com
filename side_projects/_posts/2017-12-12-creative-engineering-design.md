@@ -14,10 +14,6 @@ summary: While taking Creative Engineering Design course in 2017, I studied the 
   <div class="6u 12u$(mobile) padding10 padding-right20 border-right" align="left">
     <h3>SUMMARY</h3>
       It will be updated soon! <span class="fa fa-frown-open"></span><br>
-      However, you can see my reports below, <font style="font-style:italic;">though it is in <b>Korean</b>..<span class="fa fa-sad-cry"></span></font>
-      <br>
-      <br>
-      attached file : <a href="assets/files/reports_CED_Suyeon_Choi.pdf">[pdf, Korean]</a>
       <br>
       <br>
       <hr class="color">
