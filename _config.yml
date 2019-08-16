@@ -31,11 +31,19 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Suyeon Choi
+<<<<<<< HEAD
+subtitle: Stanford University
+description: >- # this means to ignore newlines until "baseurl:"
+author: Suyeon Choi
+email: suyeon@stanford.edu
+avatar: "assets/images/avatar.jpeg"
+=======
 subtitle: Seoul National University
 description: >- # this means to ignore newlines until "baseurl:"
 author: Suyeon Choi
 email: suyeon@stanford.edu
 avatar: "assets/images/avatar.jpg"
+>>>>>>> 501662bf17da5e02bf3bec493aa6aff9095f98e2
 
 # You'll want to customize url and baseurl for your own site:
 baseurl: "" # "/home" # the subpath of your site, e.g. /blog
@@ -47,7 +55,11 @@ twitter_url:
 facebook_url:
 googleplus_url:
 instagram_url:
+<<<<<<< HEAD
+linkedin_url: "https://www.linkedin.com/in/suyeon-choi-724751186/"
+=======
 linkedin_url:
+>>>>>>> 501662bf17da5e02bf3bec493aa6aff9095f98e2
 github_url: "https://github.com/choisuyeon"
 pinterest_url:
 slack_url:
