@@ -12,7 +12,8 @@ h1, h2, h3, h4, strong {
 }
 
 body {
-  font: 15px/1.4 sans-serif;
+  font: 16px/1.5 sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
   color: black;
 }
 
@@ -27,13 +28,72 @@ b {
   font-weight: bold;
 }
 
+span.bolder {
+  font-weight:10000;
+}
+
 name-bold {
-  font: 30px/1.4 sans-serif;
+  font: 30px/1.5 sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
   color: black;
 }
 
 small {
-  font: 14px/1.4 sans-serif;
+  font: 14px/1.5 sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
   color: black;
+}
+
+div.padding0 {
+  padding: 0px 0px 0px 0px;
+}
+div.padding10 {
+  padding : 10px 10px 10px 10px;
+  text-align: left
+}
+div.padding20 {
+  padding : 20px 20px 20px 20px;
+  text-align:justify
+}
+div.padding-left20 {
+  padding-top : 20px;
+  padding-left : 20px;
+  padding-bottom : 20px;
+  text-align:justify
+}
+div.padding-right20 {
+  padding-top : 20px;
+  padding-right : 20px;
+  padding-bottom : 20px;
+  text-align:justify
+}
+hr.color {
+  border-color : #CED5DB;
+  background-color: #CED5DB;
+  color : #CED5DB;
+}
+div.border-top {
+  border-top: 1px solid #CED5DB; height: auto;
+}
+
+div.border-bottom {
+  border-bottom: 1px solid #CED5DB; height: auto;
+}
+
+div.border-right {
+  border-right: 1px solid #CED5DB; height: auto;
+}
+
+div.border-left {
+  border-left: 1px solid #CED5DB; height: auto;
+}
+
+div.margin-minus{
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+div.margin0 {
+  margin : 0px;
 }

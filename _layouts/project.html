@@ -8,8 +8,15 @@ layout: default
 	<!-- Post -->
 	<article class="shade-two">
 	  <div class="container">
-			<header>
-				<h2>{{- page.title -}}</h2>
+			<header  style = " font-family: Palatino Linotype, Book Antiqua, Palatino, serif; "
+							 align = " center ">
+				<h2 style=" font-size : 32pt;
+										font-weight : bold;
+										color : black;">
+						{{- page.title_long -}}
+				</h2>
+				<h4 style=" font-size : 14pt;
+										font-style : italic;">{{- page.author -}}</h4>
 			</header>
 	    {{- content -}}
 	  </div>

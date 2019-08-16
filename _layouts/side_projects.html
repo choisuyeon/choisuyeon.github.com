@@ -1,0 +1,61 @@
+---
+layout: default
+category: "side_projects"
+---
+{%- assign _posts = site.categories.side_projects | sort: 'date' | reverse -%}
+{%- include header.html scrolly_nav=_posts -%}
+<!-- Main -->
+<div id="main">
+	{%- if page.content != "" -%}
+	<article class="shade-three">
+		<div class="container">
+			<header>
+				<name-bold> Side Projects </name-bold> <font size=4>(toy projects, class projects, high-school projects)</font>
+				<!--<h2>{{- page.title -}}</h2>-->
+			</header>
+			{{- content -}}
+		</div>
+	</article>
+	{%- endif -%}
+	<!-- Posts List -->
+	{%- for _post in _posts -%}
+
+				{%- capture _title -%}
+				<div align=left>
+					<name-bold>
+						<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
+					</name-bold>
+				</div>
+				{%- endcapture -%}
+				{%- capture _subtitle -%}
+				<div class="row" align=left>
+					<div class="3u 12u$(mobile)" align="left">
+						<a href="{{- _post.url | absolute_url -}}" class="image fit">
+							<img src="{{- _post.thumbnail_url | relative_url -}}" alt="thumbnail"
+									 style="border-radius:10px;
+									 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  />
+						</a>
+					</div>
+				  <div class="9u 12u$(mobile)" align="left">
+							<h3> {{- _post.subtitle -}} </h3>
+							<br>
+							<p>{{- _post.summary | strip_html | truncatewords: 100 -}}</p>
+					</div>
+				</div>
+				{%- endcapture -%}
+
+				{%- capture _excerpt -%}
+				{%- endcapture -%}
+
+				{%- capture _link -%}
+				<div align=right>
+					<a href="{{- _post.url | absolute_url -}}">See More Details</a>
+				</div>
+				{%- endcapture -%}
+
+				{%- assign _content = _excerpt | append: _link -%}
+				{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+
+
+	{%- endfor -%}
+</div>

@@ -1,0 +1,55 @@
+---
+title: pyPupil | 2018
+title_long: pyPupil &#58; Pupil-labs eye tracker helper | 2018
+subtitle: Pupil-labs eyetracker helper
+author:
+layout: project
+category: "projects"
+icon: fa-eye
+icon-style: regular
+thumbnail_url: /assets/images/pypupil/thumbnail.png
+permalink: /pypupil
+
+summary: I devised an eye-tracker setup and developed the helper module for pupil-labs products in Python (published on PyPI and Github) as a part of the near-eye display project. To reduce the form factor, We implemented our own calibration without the World Camera of Eye tracker, which is eliminated to reduce the form-factor. To calibrate eye-tracker data, we collect some data before the main measurements based on prepared target and then process it with K-mean clustering and affine transform.
+---
+<div class="row border-top" >
+  <div class="6u 12u$(mobile) padding10 padding-right20" align="left">
+  <h3>SUMMARY</h3>
+  <br>
+  I devised an eye-tracker setup and developed the helper module for pupil-labs products in Python (published on
+  <a class=aboutme href=https://pypi.org/project/pypupil>PyPI</a> and
+  <a class=aboutme href=https://github.com/choisuyeon/pypupil>Github</a>)
+  as a part of the near-eye display project. To reduce the form factor of the near-eye display,
+  We implemented our own calibration without the World Camera of Eye tracker, which is eliminated to reduce the form-factor. To calibrate eye-tracker data, we collect some data before the main measurements based on prepared target and then process it with K-mean clustering and affine transform. The results are shown on the right.
+  <br><br><br><br>
+  <a href="#" class="image fit">
+    <img src="{{ 'assets/images/pypupil/setup.jpg' | relative_url }}" alt="setup" />
+  </a>
+  <h6> Eye-tracker setup </h6>
+
+  </div>
+    <div class="6u 12u$(mobile) padding10 padding-left20" align="left" style="border-left: 1px solid #CED5DB;
+                                                     height: auto;">
+    <h3>ADDITIONAL MATERIAL</h3>
+    <br>
+    <a href="#" class="image fit">
+      <img src="{{ 'assets/images/pypupil/AM1.png' | relative_url }}" alt="a" />
+    </a>
+    <h5> Raw data (both eyes) from pupil-labs eye tracker. <br>
+    <font color=blue>■</font> : Right eye,
+    <font color=yellow>■</font> : Left eye</h5>
+    <br>
+    <a href="#" class="image fit">
+      <img src="{{ 'assets/images/pypupil/AM2.png' | relative_url }}" alt="b" />
+    </a>
+    <h5> Processed data after clustering and affine transform <br>
+      <font color=blue>■</font> : Right eye,
+      <font color=yellow>■</font> : Left eye</h5> <br>
+    <a href="#" class="image fit">
+      <img src="{{ 'assets/images/pypupil/AM3.png' | relative_url }}" alt="c" />
+    </a>
+    <h5> Synchronized data </h5><br>
+    <br>
+
+    </div>
+</div>
