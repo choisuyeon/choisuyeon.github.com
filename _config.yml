@@ -37,6 +37,7 @@ author: Suyeon Choi
 email: suyeon@stanford.edu
 avatar: "assets/images/avatar.jpeg"
 
+
 # You'll want to customize url and baseurl for your own site:
 baseurl: "" # "/home" # the subpath of your site, e.g. /blog
 url: "https://choisuyeon.github.io" # the base hostname & protocol for your site
@@ -48,6 +49,7 @@ facebook_url:
 googleplus_url:
 instagram_url:
 linkedin_url: "https://www.linkedin.com/in/suyeon-choi-724751186/"
+
 github_url: "https://github.com/choisuyeon"
 pinterest_url:
 slack_url:
