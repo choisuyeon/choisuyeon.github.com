@@ -11,16 +11,25 @@ h1, h2, h3, h4, strong {
   color: black;
 }
 
+date{
+  color:#004563;
+}
+font.avenir{
+  color:black;
+  font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+}
+
 h33 {
   color:black;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
   font-size:14pt;
 }
 
 body {
   font: 16px/1.5 sans-serif;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
   color: black;
+  background-color: #FFFFFF
 }
 
 a {
@@ -39,16 +48,31 @@ span.bolder {
 }
 
 name-bold {
-  font: 30px/1.5 sans-serif;
-	font-family: 'Source Sans Pro', sans-serif;
+  font: 26px/1.5 sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
   font-weight: bold;
   color: black;
 }
 
 small {
   font: 14px/1.5 sans-serif;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
   color: black;
+}
+#main > section.shade-one, #main article.shade-one {
+  background-color: rgba(255,255,255,1);   }
+#main > section.shade-two, #main article.shade-two {
+  background-color: rgba(255,255,255,1); }
+#main > section.shade-three, #main article.shade-three {
+  background-color: rgba(250,250,250,1); }
+#main > section.shade-four, #main article.shade-four {
+  background-color: rgba(255,255,255,1); }
+
+#footer{ background-color: rgba(250,250,250,1);}
+
+
+table{
+  font-family: 'Avenir', 'Source Sans Pro', sans-serif;
 }
 
 div.padding0 {
@@ -74,13 +98,17 @@ div.padding-right20 {
   padding-bottom : 20px;
   text-align:justify
 }
+
+div.padding-bottom20 {
+  padding-bottom : 20px;
+}
 hr.color {
   border-color : #CED5DB;
   background-color: #CED5DB;
   color : #CED5DB;
 }
 div.border-top {
-  border-top: 1px solid #CED5DB; height: auto;
+  border-top: 1px solid #CED5DB; height: auto; padding-top:20px; margin-top:20px;
 }
 
 div.border-bottom {
@@ -97,7 +125,7 @@ div.border-left {
 
 div.margin-minus{
   margin-top: -20px;
-  margin-bottom: -20px;
+  margin-bottom: -50px;
 }
 
 div.margin0 {
