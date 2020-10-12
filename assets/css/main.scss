@@ -70,7 +70,13 @@ small {
 
 #footer{ background-color: rgba(250,250,250,1);}
 
+span.highlight {
+  background-color: rgba(0,255,0,0.07);
+}
 
+div.highlight{
+  background-color: rgba(0,255,0,0.07);
+}
 table{
   font-family: 'Avenir', 'Source Sans Pro', sans-serif;
 }
@@ -107,8 +113,12 @@ hr.color {
   background-color: #CED5DB;
   color : #CED5DB;
 }
+div.toprow {
+  height: auto; padding-bottom:20px; margin-top:0px;
+}
+
 div.border-top {
-  border-top: 1px solid #CED5DB; height: auto; padding-top:20px; margin-top:20px;
+  border-top: 1px solid #CED5DB; height: auto; padding-top:20px; padding-bottom:20px; margin-top:0px;
 }
 
 div.border-bottom {
@@ -129,5 +139,5 @@ div.margin-minus{
 }
 
 div.margin0 {
-  margin : 0px;
+  margin-top: -20px;
 }
