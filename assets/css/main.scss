@@ -1,0 +1,143 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@import "jekyll-theme-prologue";
+
+header {
+  color: black;
+}
+
+h1, h2, h3, h4, strong {
+  color: black;
+}
+
+date{
+  color:#004563;
+}
+font.avenir{
+  color:black;
+  font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+}
+
+h33 {
+  color:black;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+  font-size:14pt;
+}
+
+body {
+  font: 16px/1.5 sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+  color: black;
+  background-color: #FFFFFF
+}
+
+a {
+  color : #004563;
+}
+
+a.aboutme {
+  font-weight: bold;
+}
+b {
+  font-weight: bold;
+}
+
+span.bolder {
+  font-weight:10000;
+}
+
+name-bold {
+  font: 26px/1.5 sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+small {
+  font: 14px/1.5 sans-serif;
+	font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+  color: black;
+}
+#main > section.shade-one, #main article.shade-one {
+  background-color: rgba(255,255,255,1);   }
+#main > section.shade-two, #main article.shade-two {
+  background-color: rgba(255,255,255,1); }
+#main > section.shade-three, #main article.shade-three {
+  background-color: rgba(250,250,250,1); }
+#main > section.shade-four, #main article.shade-four {
+  background-color: rgba(255,255,255,1); }
+
+#footer{ background-color: rgba(250,250,250,1);}
+
+span.highlight {
+  background-color: rgba(0,255,0,0.07);
+}
+
+div.highlight{
+  background-color: rgba(0,255,0,0.07);
+}
+table{
+  font-family: 'Avenir', 'Source Sans Pro', sans-serif;
+}
+
+div.padding0 {
+  padding: 0px 0px 0px 0px;
+}
+div.padding10 {
+  padding : 10px 10px 10px 10px;
+  text-align: left
+}
+div.padding20 {
+  padding : 20px 20px 20px 20px;
+  text-align:justify
+}
+div.padding-left20 {
+  padding-top : 20px;
+  padding-left : 20px;
+  padding-bottom : 20px;
+  text-align:justify
+}
+div.padding-right20 {
+  padding-top : 20px;
+  padding-right : 20px;
+  padding-bottom : 20px;
+  text-align:justify
+}
+
+div.padding-bottom20 {
+  padding-bottom : 20px;
+}
+hr.color {
+  border-color : #CED5DB;
+  background-color: #CED5DB;
+  color : #CED5DB;
+}
+div.toprow {
+  height: auto; padding-bottom:20px; margin-top:0px;
+}
+
+div.border-top {
+  border-top: 1px solid #CED5DB; height: auto; padding-top:20px; padding-bottom:20px; margin-top:0px;
+}
+
+div.border-bottom {
+  border-bottom: 1px solid #CED5DB; height: auto;
+}
+
+div.border-right {
+  border-right: 1px solid #CED5DB; height: auto;
+}
+
+div.border-left {
+  border-left: 1px solid #CED5DB; height: auto;
+}
+
+div.margin-minus{
+  margin-top: -20px;
+  margin-bottom: -50px;
+}
+
+div.margin0 {
+  margin-top: -20px;
+}

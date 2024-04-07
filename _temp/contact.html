@@ -1,0 +1,27 @@
+---
+title: Contact
+auto-header: none
+icon: fa-envelope
+order: 2
+---
+
+<h3>If you are interested in me, do not hesitate to contact to me!</h3>
+<h4>You can also contact me by clicking on <span class="fa fa-envelope"></span> at the bottom left. </h4>
+
+<form method="post" action="https://formspree.io/{{ site.email }}">
+  <div class="row">
+    <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Your Name" /></div>
+    <div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Your Email" /></div>
+  </div>
+
+  <div class="row">
+    <div class="12u$">
+      <textarea name="message" placeholder="Message"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="12u$">
+      <input type="submit" value="Send Message to Choi" />
+    </div>
+  </div>
+</form>
