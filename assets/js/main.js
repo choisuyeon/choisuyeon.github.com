@@ -4,6 +4,19 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function showPubs(id) {
+	if (id == 0) {
+	  document.getElementById('pubs').innerHTML = document.getElementById('pubs_selected').innerHTML;
+	  document.getElementById('selected0').style = 'text-decoration:underline;color:#000000';
+	  document.getElementById('selected1').style = '';
+	} else if (id == 1) {
+	  document.getElementById('pubs').innerHTML = document.getElementById('pubs_full').innerHTML;
+	  document.getElementById('selected1').style = 'text-decoration:underline;color:#000000';
+	  document.getElementById('selected0').style = '';
+	} else {
+	}
+  }
+  
 (function($) {
 
 	skel.breakpoints({
@@ -117,3 +130,4 @@
 	});
 
 })(jQuery);
+

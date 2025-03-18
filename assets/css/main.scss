@@ -18,6 +18,13 @@ font.avenir{
   color:black;
   font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
 }
+font.avenir-bold-title{
+  color:black;
+  font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+  // font-style: oblique;
+  font-size: 130%;
+  font-weight: bold;
+}
 
 h33 {
   color:black;
@@ -48,7 +55,15 @@ span.bolder {
 }
 
 name-bold {
-  font: 26px/1.5 sans-serif;
+  font: 28px/1.5 sans-serif;
+	font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+
+title-bold {
+  font: 22px/1.5 sans-serif;
 	font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
   font-weight: bold;
   color: black;
@@ -62,13 +77,13 @@ small {
 #main > section.shade-one, #main article.shade-one {
   background-color: rgba(255,255,255,1);   }
 #main > section.shade-two, #main article.shade-two {
-  background-color: rgba(255,255,255,1); }
+  background-color: rgba(250,250,252,1); }
 #main > section.shade-three, #main article.shade-three {
-  background-color: rgba(250,250,250,1); }
+  background-color: rgba(255,255,255,1); }
 #main > section.shade-four, #main article.shade-four {
   background-color: rgba(255,255,255,1); }
 
-#footer{ background-color: rgba(250,250,250,1);}
+#footer{ background-color: rgba(255,255,255,1);}
 
 span.highlight {
   background-color: rgba(0,255,0,0.07);
@@ -121,7 +136,7 @@ div.toprow {
 }
 
 div.border-top {
-  border-top: 1px solid #CED5DB; height: auto; padding-top:20px; padding-bottom:20px; margin-top:0px;
+  border-top: 1px solid #ffffff; height: auto; padding-top:15px; padding-bottom:15px; margin-top:0px;
 }
 
 div.border-bottom {
@@ -143,4 +158,11 @@ div.margin-minus{
 
 div.margin0 {
   margin-top: -20px;
+}
+
+div.padding-top30 {
+  padding-top : 30px;
+}
+div.padding-top10 {
+  padding-top : 10px;
 }

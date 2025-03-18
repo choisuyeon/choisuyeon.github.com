@@ -5,6 +5,35 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/Avenir/Avenir-Book.eot') format('embedded-opentype'),
+         url('../../assets/fonts/Avenir/Avenir-Book.ttf') format('truetype'),
+         url('../../assets/fonts/Avenir/Avenir-Book.woff') format('woff'),
+         url('../../assets/fonts/Avenir/Avenir-Book.svg#Avenir-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/Avenir/Avenir-Heavy.eot') format('embedded-opentype'),
+         url('../../assets/fonts/Avenir/Avenir-Heavy.ttf') format('truetype'),
+         url('../../assets/fonts/Avenir/Avenir-Heavy.woff') format('woff'),
+         url('../../assets/fonts/Avenir/Avenir-Heavy.svg#Avenir-Heavy') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/Avenir/Avenir-Oblique.eot') format('embedded-opentype'),
+         url('../../assets/fonts/Avenir/Avenir-Oblique.ttf') format('truetype'),
+         url('../../assets/fonts/Avenir/Avenir-Oblique.woff') format('woff'),
+         url('../../assets/fonts/Avenir/Avenir-Oblique.svg#Avenir-Oblique') format('svg');
+    font-weight: normal;
+    font-style: oblique;
+}
 
 /*
 	Prologue by HTML5 UP
@@ -27,10 +56,10 @@
 		boxModel: 'border',
 		grid: ( gutters: (40px, 40px) ),
 		conditionals: true,
-		containers: 1400px,
+		containers: 1100px,
 		breakpoints: (
 			wide: (
-				containers: 1200px,
+				containers: 1100px,
 				grid: (
 					gutters: (40px, 40px)
 				),
@@ -223,11 +252,12 @@
 		}
 
 		.row {
-			margin-top: 10px;
+			margin-top: 0px;
 		}
 
 		.row > * {
 			padding-top: 0;
+			padding-bottom: 0;
 		}
 
 		ul, ol {
@@ -655,7 +685,7 @@
 /* Main */
 
 	#main {
-		margin-left: 375px;
+		margin-left: 300px;
 		> section {
 			text-align: center;
 		}
@@ -670,10 +700,10 @@
 		> section, article {
 			margin: 0;
 			overflow: hidden;
-			padding: 4em 0;
-			box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
-			background-image: url('images/overlay.png');
-
+			padding: 0.0em 0;
+			box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.0), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.0);
+			// background-image: url('images/overlay.png');
+			background-color: #fff;
 			&.dark {
 				color: #ddd;
 				color: rgba(255, 255, 255, 0.75);
@@ -732,6 +762,9 @@
 					background-color: #ffffff;
 			}
 		}
+		span.news {
+			font-size: 95%;
+		}
 	}
 
 /* Wide */
@@ -772,13 +805,19 @@
 
 			#main {
 				> section, article {
-					padding: 3em 0;
+					padding: 0.5em 0;
 				}
 
 				section {
 					&.cover {
-						padding: 5em 0;
+						padding: 0.5em 0;
 					}
+				}
+				name-bold {
+					font-size: 18pt;
+				}
+				span.news {
+					font-size: 80%;
 				}
 			}
 
@@ -1046,13 +1085,19 @@
 				margin-left: 0;
 
 				> section, article {
-					padding: 3em 0;
+					padding: 0.5em 0;
 				}
 
 				section {
 					&.cover {
 						padding: 4em 0;
 					}
+				}
+				name-bold {
+					font-size: 17pt;
+				}
+				span.news {
+					font-size: 75%;
 				}
 			}
 	}
@@ -1092,7 +1137,7 @@
 
 			#main {
 				> section, article {
-					padding: 2em 0;
+					padding: 0.5em 0;
 				}
 
 				section {
@@ -1103,6 +1148,9 @@
 							padding: 0 1em;
 						}
 					}
+				}
+				span.news {
+					font-size: 90%;
 				}
 			}
 
