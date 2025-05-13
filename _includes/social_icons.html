@@ -1,16 +1,19 @@
 <!-- Social Icons -->
 <ul class="icons">
+  {%- if site.email -%}
+  <li><a href="mailto:{{- site.email -}}" class="icon fa-envelope"><span class="label">Email</span></a></li>
+  {%- endif -%}
   {%- if site.github_url -%}
   <li><a href="{{- site.github_url -}}" class="icon-b fa-github"><span class="label">GitHub</span></a></li>
-  {%- endif -%}
-  {%- if site.google_scholar_url -%}
-  <li><font size=4><a href="{{- site.google_scholar_url -}}" class="ai ai-google-scholar ai-1x"></a></font></li>
   {%- endif -%}
   {%- if site.linkedin_url -%}
   <li><a href="{{- site.linkedin_url -}}" class="icon-b fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
   {%- endif -%}
   {%- if site.twitter_url -%}
   <li><a href="{{- site.twitter_url -}}" class="icon-b fa-twitter"><span class="label">Twitter</span></a></li>
+  {%- endif -%}
+  {%- if site.youtube_url -%}
+  <li><a href="{{- site.youtube_url -}}" class="icon-b fa-youtube"><span class="label">Youtube</span></a></li>
   {%- endif -%}
   {%- if site.facebook_url -%}
   <li><a href="{{- site.facebook_url -}}" class="icon-b fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -30,7 +33,7 @@
   {%- if site.dribbble_url -%}
   <li><a href="{{- site.dribbble_url -}}" class="icon-b fa-dribbble"><span class="label">Dribbble</span></a></li>
   {%- endif -%}
-  {%- if site.email -%}
-  <li><a href="mailto:{{- site.email -}}" class="icon fa-envelope"><span class="label">Email</span></a></li>
+  {%- if site.google_scholar_url -%}
+  <li><font size=4><a href="{{- site.google_scholar_url -}}" class="ai ai-google-scholar ai-1x"></a></font></li>
   {%- endif -%}
 </ul>
