@@ -1,910 +1,577 @@
 ---
 title: Publications
 auto-header: none
-
 icon: fa-list
 order: 4
 ---
+
 <link rel="stylesheet" href="/assets/css/academicons.min.css"/>
 
-<div class = "row padding-top10" align = left>
+<div class="row padding-top10" align="left">
   <div class="12u 12u(mobile)">
-    <title-bold> Publications
-    </title-bold>
-      <!-- <a href="https://scholar.google.com/citations?user=UdimOIwAAAAJ&hl=en">
-        <i class="ai ai-google-scholar ai-1x"></i>
-      </a> -->
-      (<a href="" id="selected0" onclick="showPubs(0); return false;">Selected</a> / <a href="" id="selected1" onclick="showPubs(1); return false;">All</a>)
+    <title-bold>Publications </title-bold>
+    <!--
+    <a href="https://scholar.google.com/citations?user=UdimOIwAAAAJ&hl=en">
+      <i class="ai ai-google-scholar ai-1x"></i>
+    </a>
+    -->
+      (<a href="#" id="selected0">Selected</a> /
+    <a href="#" id="selected1">All</a>)
   </div>
 </div>
 
+<!-- 
+  Move the #pubs div near the top so it's absolutely guaranteed
+  to exist before any script executes, even if JS loads early.
+  Use consistent ID and leave it empty for JS population.
+-->
 <div id="pubs" style="padding-bottom: 100px;"></div>
 
-<script id="pubs_full">
+<script>
 
 
-<!--Nature Photonics 2025-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://www.computationalimaging.org/publications/synthetic-aperture-waveguide-holography/" class="image fit">
-      <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-        <source src="assets/images/np2025/teaser.mp4" type="video/mp4" />
+// Reusable author master list
+const AUTHORS = {
+  me:      {name: "Suyeon Choi",  url: null,               underline: true },
+  cjang:      {name: "Changwon Jang", url: null},
+  douglanman:    {name: "Douglas Lanman"},
+  gordon:    {name: "Gordon Wetzstein", url: "http://web.stanford.edu/~gordonwz/"},
+  brianchao:      {name: "Brian Chao", url: "https://bchao1.github.io/"},
+  jackieyang:      {name: "Jackie Yang"},
+  manu:      {name: "Manu Gopakumar", url: "https://manugopa.github.io"},
+  gunyeal:   {name: "Gun-Yeal Lee", url: "https://gunyeal.github.io/"},
+  liangshi:       {name: "Liang Shi", url: "https://people.csail.mit.edu/liangs/"},
+  jonghyun:  {name: "Jonghyun Kim", url: "https://research.nvidia.com/person/jonghyun-kim"},
+  evanpeng:     {name: "Yifan Peng", url: "https://www.eee.hku.hk/~evanpeng/"},
+  swnam:       {name: "Seung-Woo Nam", url: "https://nseungwoo.github.io/"},
+  jongmoseo:       {name: "Jong-Mo Seo"},
+  yoonchanjeong:     {name: "Yoonchan Jeong"},
+  otoole:    {name: "Matthew O'Toole", url: "https://www.cs.cmu.edu/~motoole2/"},
+  wardlopes: {name: "Ward Lopes"},
+  nitish:    {name: "Nitish Padmanaban", url:"https://nitish.me/"},
+  dhyoo:     {name: "Dongheon Yoo"},
+  seungjaelee:   {name: "Seungjae Lee", url:"http://sleehub.com"},
+  youngjinjo:        {name: "Youngjin Jo"},
+  jaebumcho:    {name: "Jaebum Cho"},
+  byoungholee:  {name: "Byoungho Lee", url:"http://oeqelab.snu.ac.kr/PROF"},
+  dongyeonkim:  {name: "Dongyeon Kim", url:"https://dongyeon93.github.io/"},
+  // Add more as necessary
+};
+
+// Util to render authors from array of objects [{id, star, specialStyle}]
+function renderAuthors(authorArr) {
+  return authorArr.map(a => {
+    let meta = AUTHORS[a.id];
+    if (!meta) return a.id; // fall back to string
+    let name = meta.name;
+    let out = name;
+    // underline
+    if (meta.underline) out = `<u>${out}</u>`;
+    // hyperlink
+    if (meta.url) out = `<a href="${meta.url}">${out}</a>`;
+    // special mark/star
+    if (a.star) out += "*";
+    return out;
+  }).join(", ");
+}
+
+const publications = [
+  {
+    id: 'np2025',
+    show: ['full', 'selected'],
+    title: 'Synthetic Aperture Waveguide Holography for Compact MR Displays with Large Etendue',
+    authors: [
+      { id: 'me', star: true },
+      { id: 'cjang', star: true },
+      { id: 'douglanman' },
+      { id: 'gordon' }
+    ],
+    venue: 'Nature Photonics (2025)',
+    media: {
+      type: 'video',
+      src: '/assets/images/np2025/teaser.mp4'
+    },
+    links: [
+      { label: 'Article', url: 'https://www.nature.com/articles/s41566-025-01718-w', newtab: true },
+      { label: 'Project Page', url: 'https://www.computationalimaging.org/publications/synthetic-aperture-waveguide-holography/' },
+      { label: 'Code', url: 'https://github.com/choisuyeon/sawh' }
+    ]
+  },
+  {
+    id: 'sig2025',
+    show: ['full', 'selected'],
+    title: 'Gaussian Wave Splatting for Computer-Generated Holography',
+    authors: [
+      { id: 'me', star: true },
+      { id: 'brianchao', star: true },
+      { id: 'jackieyang' },
+      { id: 'manu' },
+      { id: 'gordon' }
+    ],
+    venue: 'SIGGRAPH 2025',
+    media: {
+      type: 'video',
+      src: '/assets/images/SIG2025/garden_nvs_focal_stack.mp4'
+    },
+    links: [
+      { label: 'Technical Paper', url: 'https://drive.google.com/file/d/15FzKc1lYe9VrmBNSl7fvPlzd5fAlsFg3/view?usp=sharing', newtab: true },
+      { label: 'Supplement', url: 'https://drive.google.com/file/d/15Icq4NgdBqc56LZ_qsRCJ_eiwAqJQ49Y/view?usp=sharing', newtab: true },
+      { label: 'Project Page', url: 'https://bchao1.github.io/gaussian-wave-splatting/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/hsplat' },
+      { label: 'Arxiv', url: 'http://arxiv.org/abs/2505.06582', newtab: true }
+    ]
+  },
+  {
+    id: 'sigasia2024',
+    show: ['full'],
+    title: 'Large Étendue 3D Holographic Display with Content-adaptive Dynamic Fourier Modulation',
+    authors: [
+      { id: 'brianchao' },
+      { id: 'manu' },
+      { id: 'me' },
+      { id: 'liangshi' },
+      { id: 'jonghyun' },
+      { id: 'gordon' }
+    ],
+    venue: 'SIGGRAPH Asia 2024',
+    media: {
+      type: 'img',
+      src: '/assets/images/SIGAsia2024/teaser.gif'
+    },
+    links: [
+      { label: 'Technical Paper & Supplement', url: 'https://arxiv.org/abs/2409.03143' },
+      { label: 'Project Page', url: 'https://bchao1.github.io/holo_dfm/' }
+    ]
+  },
+  {
+    id: 'dissertation',
+    show: ['full', 'selected'],
+    title: 'Design of Holographic Display Systems based on Artificial Intelligence',
+    authors: [
+      { id: 'me' }
+    ],
+    venue: 'Ph.D. Dissertation, Stanford University, 2024 <font color=red>(Awarded "ACM SIGGRAPH Outstanding Dissertation Honorable Mention")</font>',
+    media: {
+      type: 'img',
+      src: '/assets/images/Thesis/thesis.png'
+    },
+    links: [
+      { label: 'Dissertation', url: 'https://searchworks.stanford.edu/view/in00000166958' }
+    ]
+  },
+  {
+    id: 'nature2024',
+    show: ['full', 'selected'],
+    title: 'Full-Colour 3D Holographic Augmented-Reality Displays with Metasurface Waveguides',
+    authors: [
+      { id: 'manu', star: true },
+      { id: 'gunyeal', star: true },
+      { id: 'me' },
+      { id: 'brianchao' },
+      { id: 'evanpeng' },
+      { id: 'jonghyun' },
+      { id: 'gordon' }
+    ],
+    venue: 'Nature (2024)',
+    media: {
+      type: 'img',
+      src: '/assets/images/nature2024/teaser.jpeg'
+    },
+    links: [
+      { label: 'Article', url: 'https://www.nature.com/articles/s41586-024-07386-0' },
+      { label: 'Project Page', url: 'https://www.computationalimaging.org/publications/holographicar/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/holographic-AR-glasses' }
+    ]
+  },
+  {
+    id: 'sig2024',
+    show: ['full'],
+    title: 'Holographic Parallax Improves 3D Perceptual Realism',
+    authors: [
+      { id: 'dongyeonkim', star: true },
+      { id: 'swnam', star: true },
+      { id: 'me', star: true },
+      { id: 'jongmoseo' },
+      { id: 'gordon' },
+      { id: 'yoonchanjeong' }
+    ],
+    venue: 'SIGGRAPH 2024 & SIGGRAPH 2024 E-tech',
+    media: {
+      type: 'img',
+      src: '/assets/images/SIG2024/hp_teaser.gif'
+    },
+    links: [
+      { label: 'Technical Paper & Supplement', url: 'https://arxiv.org/pdf/2404.11810.pdf' },
+      { label: 'Project Page', url: 'https://www.computationalimaging.org/publications/holographic-parallax' },
+      { label: 'Extended Abstract', url: 'https://dl.acm.org/doi/10.1145/3641517.3664386' }
+    ]
+  },
+  {
+    id: 'ol2023',
+    show: ['full'],
+    title: 'High Brightness Holographic Projection',
+    authors: [
+      { id: 'brianchao' },
+      { id: 'manu' },
+      { id: 'me' },
+      { id: 'gordon' }
+    ],
+    venue: 'Optics Letters (2023)',
+    media: {
+      type: 'video',
+      src: '/assets/images/OL2023/teaser.mp4',
+      style: 'height: 60%; object-fit: cover;'
+    },
+    links: [
+      { label: 'Paper', url: 'https://opg.optica.org/ol/fulltext.cfm?uri=ol-48-15-4041&id=535470' }
+    ]
+  },
+  {
+    id: 'sig2022_time',
+    show: ['full', 'selected'],
+    title: 'Time-multiplexed Neural Holography: A Flexible Framework for Holographic Near-eye Displays with Fast Heavily-quantized Spatial Light Modulators',
+    authors: [
+      { id: 'me', star: true },
+      { id: 'manu', star: true },
+      { id: 'evanpeng' },
+      { id: 'jonghyun' },
+      { id: 'otoole' },
+      { id: 'gordon' }
+    ],
+    venue: `SIGGRAPH 2022 & <br>SIGGRAPH 2023 E-tech (w/ <a href="https://bchao1.github.io/">Brian Chao</a>)`,
+    media: {
+      type: 'img',
+      src: '/assets/images/SIG2022/tmnh_teaser.gif'
+    },
+    links: [
+      { label: 'Technical Paper', url: 'https://drive.google.com/file/d/1n8xSdHgW0D5G5HhwSKrqCy1iztAcDHgX/view?usp=sharing' },
+      { label: 'Supplement', url: 'https://drive.google.com/file/d/1n9hdLq1xvur4I_OkGNyFgoKHGDZcMxcE/view' },
+      { label: 'Project Page', url: 'https://www.computationalimaging.org/publications/time-multiplexed-neural-holography/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/time-multiplexed-neural-holography' },
+      { label: 'Extended Abstract', url: 'https://dl.acm.org/doi/10.1145/3588037.3595395' },
+    ]
+  },
+  {
+    id: 'sig2022_thinvr',
+    show: ['full'],
+    title: 'Holographic Glasses for Virtual Reality',
+    authors: [
+      { id: 'jonghyun' },
+      { id: 'manu' },
+      { id: 'me' },
+      { id: 'evanpeng' },
+      { id: 'wardlopes' },
+      { id: 'gordon' }
+    ],
+    venue: 'SIGGRAPH 2022',
+    media: {
+      type: 'img',
+      src: '/assets/images/SIG2022/thinvr_teaser.png'
+    },
+    links: [
+      { label: 'Technical Paper', url: '/assets/files/siggraph2022_thinvr_main.pdf' },
+      { label: 'Supplement', url: '/assets/files/siggraph2022_thinvr_supp.pdf' },
+      { label: 'Project Page', url: 'https://research.nvidia.com/publication/2022-08_holographic-glasses-virtual-reality' }
+    ]
+  },
+  {
+    id: 'sigasia2021_nh3d',
+    show: ['full'],
+    title: 'Neural 3D Holography: Learning Accurate Wave Propagation Models for 3D Holographic Virtual and Augmented Reality Displays',
+    authors: [
+      { id: 'me', star: true },
+      { id: 'manu', star: true },
+      { id: 'evanpeng' },
+      { id: 'jonghyun' },
+      { id: 'gordon' }
+    ],
+    venue: 'SIGGRAPH Asia 2021',
+    media: {
+      type: 'video',
+      src: '/assets/images/SIGAsia2021/ar.mp4'
+    },
+    links: [
+      { label: 'Technical Paper', url: '/assets/files/ToG21.pdf' },
+      { label: 'Supplement', url: 'https://drive.google.com/file/d/1FNSXBYivIN9hqDUxzUIMgSFVKJKtFEOr/view?usp=sharing' },
+      { label: 'Project Page', url: 'http://www.computationalimaging.org/publications/neuralholography3d/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/neural-3d-holography' }
+    ]
+  },
+  {
+    id: 'ol2021_hogd',
+    show: ['full'],
+    title: 'Unfiltered Holography: Optimizing High Diffraction Orders without Optical Filtering for Compact Holographic Displays',
+    authors: [
+      { id: 'manu' },
+      { id: 'jonghyun' },
+      { id: 'me' },
+      { id: 'evanpeng' },
+      { id: 'gordon' }
+    ],
+    venue: `Optics Letters (2021) <font color=red>[Editor's Pick, 6th Top Downloads in Dec 2021]</font>`,
+    media: {
+      type: 'img',
+      src: '/assets/images/OL2021/SGD8.png',
+      style: "onmouseover=\"this.src='/assets/images/OL2021/HOGD8.png';\" onmouseout=\"this.src='/assets/images/OL2021/SGD8.png';\""
+    },
+    links: [
+      { label: 'Paper', url: 'https://www.osapublishing.org/ol/fulltext.cfm?uri=ol-46-23-5822&id=464968' },
+      { label: 'Supplement', url: 'https://opticapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Unfiltered_Holography_Optimizing_High_Diffraction_Orders_without_Optical_Filtering_for_Compact_Holographic_Displays_-_5523480_pdf/16913164' },
+      { label: 'Project Page', url: 'https://www.computationalimaging.org/publications/unfilteredholography/' }
+    ]
+  },
+  {
+    id: 'sciadv2021',
+    show: ['full'],
+    title: 'Speckle-free Holography with Partially Coherent Light Sources and Camera-in-the-loop Calibration',
+    authors: [
+      { id: 'evanpeng', star: true },
+      { id: 'me', star: true },
+      { id: 'jonghyun' },
+      { id: 'gordon' }
+    ],
+    venue: 'Science Advances (2021)',
+    media: {
+      type: 'img',
+      src: '/assets/images/Sciadv/lion.png'
+    },
+    links: [
+      { label: 'Paper', url: 'https://www.science.org/doi/10.1126/sciadv.abg5040' },
+      { label: 'Project Page', url: 'http://www.computationalimaging.org/publications/partiallycoherentholography/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/partially_coherent_neural_holography' }
+    ]
+  },
+  {
+    id: 'optica2021_mh',
+    show: ['full'],
+    title: 'Optimizing image quality for holographic near-eye displays with Michelson Holography',
+    authors: [
+      { id: 'me' },
+      { id: 'jonghyun' },
+      { id: 'evanpeng' },
+      { id: 'gordon' }
+    ],
+    venue: `Optica (2021) <font color=red>[4th Top Downloads in Feb 2021]</font> & <br>SPIE AR|VR|MR 2021`,
+    media: {
+      type: 'img',
+      src: '/assets/images/MH/teaser_double.png',
+      style: "onmouseover=\"this.src='/assets/images/MH/teaser_single.png';\" onmouseout=\"this.src='/assets/images/MH/teaser_double.png';\""
+    },
+    links: [
+      { label: 'Paper', url: 'https://www.osapublishing.org/optica/fulltext.cfm?uri=optica-8-2-143&id=446984' },
+      { label: 'Supplement', url: 'https://osapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Michelson_Holography_Dual-SLM_Holography_with_Camera-in-the-loop_Optimization_-_4929111_pdf/13360166' },
+      { label: 'Project Page', url: 'http://www.computationalimaging.org/publications/michelsonholography/' },
+      { label: 'Presentation', url: 'https://spie.org/ar-vr-mr/presentation/High-quality-holographic-displays-using-double-SLMs-and-camera-in/11765-28' }
+    ]
+  },
+  {
+    id: 'sigasia2020',
+    show: ['full', 'selected'],
+    title: 'Neural Holography with Camera-in-the-loop Training',
+    authors: [
+      { id: 'evanpeng' },
+      { id: 'me' },
+      { id: 'nitish' },
+      { id: 'gordon' }
+    ],
+    venue: `SIGGRAPH Asia 2020 & <br>SIGGRAPH 2020 E-tech (w/ <a href="http://j-kim.kr"><a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a></a>)`,
+    media: {
+      type: 'img',
+      src: '/assets/images/SIGAsia2020/thumbnail.gif'
+    },
+    links: [
+      { label: 'Technical Paper', url: '/assets/files/neural_holography_SIGAsia20.pdf' },
+      { label: 'Supplement', url: 'https://drive.google.com/file/d/1vay4xeg5iC7y8CLWR6nQEWe3mjBuqCWB/view' },
+      { label: 'Project Page', url: 'http://www.computationalimaging.org/publications/neuralholography/' },
+      { label: 'Code', url: 'https://github.com/computational-imaging/neural-holography' },
+      { label: 'Extended Abstract', url: 'http://www.computationalimaging.org/wp-content/uploads/2020/08/NeuralHolography_SIGGRAPH_ETech_2020.pdf' },
+      { label: 'Video (3 min)', url: 'https://www.youtube.com/watch?v=Az4FDIVY7-w&feature=emb_logo' },
+      { label: '15 mins', url: 'https://www.youtube.com/watch?v=ZMl9PdrU1mE' }
+    ]
+  },
+  {
+    id: 'tvcg2020',
+    show: ['full'],
+    title: 'Volumetric Head-Mounted Display with Locally Adaptive Focal Blocks',
+    authors: [
+      { id: 'dhyoo', star: true },
+      { id: 'seungjaelee', star: true },
+      { id: 'youngjinjo' },
+      { id: 'jaebumcho' },
+      { id: 'me' },
+      { id: 'byoungholee' }
+    ],
+    venue: `IEEE Transactions on Visualization and Computer Graphics (TVCG) (2020) & <br>SPIE Photonics West Optical Design Challenge 2019 <font color=red>(2nd Prize)</font>`,
+    media: {
+      type: 'img',
+      src: '/assets/images/tvcg2020/thumbnail.png'
+    },
+    links: [
+      { label: 'TVCG', url: 'https://doi.org/10.1117/12.2525055' },
+      { label: 'Paper', url: '/assets/files/tvcg2020.pdf' },
+      { label: 'Optical Design Challenge', url: 'https://doi.org/10.1117/12.2525055' },
+      { label: 'ODC Paper', url: '/assets/files/spie-odc-2019.pdf' },
+      { label: 'BibTex', url: '/assets/files/citation-11040_.bib' }
+    ]
+  },
+  {
+    id: 'sigasia2019_tomo',
+    show: ['full'],
+    title: 'Tomographic Projector: Large Scale Volumetric Display with Uniform Viewing Experiences',
+    authors: [
+      { id: 'youngjinjo', star: true },
+      { id: 'seungjaelee', star: true },
+      { id: 'dhyoo' },
+      { id: 'me' },
+      { id: 'dongyeonkim' },
+      { id: 'byoungholee' }
+    ],
+    venue: 'SIGGRAPH Asia 2019',
+    media: {
+      type: 'img',
+      src: '/assets/images/tomographic-projector/thumbnail.png'
+    },
+    links: [
+      { label: 'Technical Paper', url: '/assets/files/ToG19.pdf' },
+      { label: 'Supplement', url: 'https://dl.acm.org/action/downloadSupplement?doi=10.1145%2F3355089.3356577&file=a215-jo.zip' }
+    ]
+  },
+  {
+    id: 'oe2019_optimal_binary',
+    show: ['full'],
+    title: 'Optimal Binary Representation via Non-convex Optimization on Tomographic Displays',
+    authors: [
+      { id: 'me' },
+      { id: 'seungjaelee' },
+      { id: 'youngjinjo' },
+      { id: 'dhyoo' },
+      { id: 'dongyeonkim' },
+      { id: 'byoungholee' }
+    ],
+    venue: 'Optics Express (2019)',
+    media: {
+      type: 'img',
+      src: '/assets/images/Non-convex/proposed_ani.gif'
+    },
+    links: [
+      { label: 'Paper', url: '/assets/files/oe-27-17-24362.pdf' },
+      { label: 'Code', url: 'https://github.com/choisuyeon/optimal-binary-representation-via-non-convex-optimization-on-tomographic-displays' }
+    ]
+  },
+];
+
+// Attach a function to publications to render authorsHTML as a string for each publication
+publications.forEach(pub => {
+  pub.authorsHTML = renderAuthors(pub.authors || []);
+});
+
+// Renders a single publication block
+function renderPub(pub) {
+  let mediaHtml = '';
+  // Construct media block
+  if (pub.media.type === 'video') {
+    mediaHtml = `
+      <video style="font-family: inherit; font-size: inherit; width: 100%; border-radius: 4px; ${pub.media.style ? pub.media.style : ''}"
+        autoplay loop muted playsinline>
+        <source src="${pub.media.src}" type="video/mp4" />
       </video>
-    </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Synthetic Aperture Waveguide Holography for Compact MR Displays with Large Etendue
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>*,
-      Changwon Jang*,
-      Douglas Lanman,
-      <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-    </i> <br>
-    <span font-style="normal">Nature Photonics (2025)</span>
-    <br><br>
-    <a href="https://www.nature.com/articles/s41566-025-01718-w" target="_blank"> [Article] </a> | 
-    <a href="https://www.computationalimaging.org/publications/synthetic-aperture-waveguide-holography/">[Project Page]</a> | 
-    <a href="">[Code (Coming Soon)]</a> 
-  </div>
-</div>
-
-
-<!--SIGGRAPH 2025-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://bchao1.github.io/gaussian-wave-splatting/" class="image fit">
-      <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-        <source src="assets/images/SIG2025/garden_nvs_focal_stack.mp4" type="video/mp4" />
-      </video>
-    </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Gaussian Wave Splatting for Computer-Generated Holography
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>*,
-      <a href="https://bchao1.github.io/">Brian Chao</a>*,
-      Jackie Yang,
-      <a href="https://manugopa.github.io">Manu Gopakumar</a>,
-      <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-    </i> <br>
-    <span font-style="normal">SIGGRAPH 2025</span>
-    <br><br>
-    <a href="https://drive.google.com/file/d/15FzKc1lYe9VrmBNSl7fvPlzd5fAlsFg3/view?usp=sharing" target="_blank"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/15Icq4NgdBqc56LZ_qsRCJ_eiwAqJQ49Y/view?usp=sharing" target="_blank"> [Supplement] </a> |
-    <a href="https://bchao1.github.io/gaussian-wave-splatting/">[Project Page]</a> | <a href="http://arxiv.org/abs/2505.06582" target="_blank">[Arxiv]</a> | <a href="">[Code (Coming Soon)]</a> 
-  </div>
-</div>
-
-
-<!--SIGGRAPH Asia 2024-->
- <div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://bchao1.github.io/holo_dfm/" class="image fit">
-      <img src="{{ 'assets/images/SIGAsia2024/teaser.gif' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font size=4 class='avenir-bold-title'>
-        Large Étendue 3D Holographic Display with Content-adaptive Dynamic Fourier Modulation
-      </font>
-      <br>
-      <i> 
-        <a href="https://bchao1.github.io/">Brian Chao</a>,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <u>Suyeon Choi</u>,
-        <a href="https://people.csail.mit.edu/liangs/">Liang Shi</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH Asia 2024 </span>
-      <br><br>
-      <a href="https://arxiv.org/abs/2409.03143"> [Technical Paper & Supplement] </a> | <a href="https://bchao1.github.io/holo_dfm/">[Project Page]</a> 
-    </div>
-  </div> 
-
-  <!--Dissertation-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://searchworks.stanford.edu/view/in00000166958" class="image fit">
-        <img src="{{ 'assets/images/Thesis/thesis.png' | relative_url }}" /> 
-      </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Design of Holographic Display Systems based on Artificial Intelligence
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>
-    </i> <br>
-    <span font-style="normal">Ph.D. Dissertation, Stanford University, 2024 <font color=red>(Awarded "ACM SIGGRAPH Outstanding Dissertation Honorable Mention")</font> </span> 
-
+    `;
+  } else {
+    // Separate CSS styles from JavaScript event handlers
+    let cssStyle = 'border-radius: 4px;';
+    let eventHandlers = '';
     
+    if (pub.media.style) {
+      // Check if it contains JavaScript event handlers (starts with "on")
+      if (pub.media.style.trim().startsWith('on')) {
+        // Extract event handlers and add them as proper HTML attributes
+        eventHandlers = ' ' + pub.media.style;
+      } else {
+        // It's CSS, add it before our styling
+        cssStyle = pub.media.style + '; ' + cssStyle;
+      }
+    }
+    
+    mediaHtml = `
+      <img src="${pub.media.src}" alt="" style="${cssStyle}"${eventHandlers}/>
+    `;
+  }
 
-    <br><br>
-    <a href="https://searchworks.stanford.edu/view/in00000166958"> [Dissertation] </a>
-  </div>
-</div>
+  // Links (with line break after every 4)
+  let linksHtml = '';
+  if (pub.links && pub.links.length > 0) {
+    linksHtml = pub.links.map((link, i) => {
+      let el = '';
+      if (!link.url) {
+        el = `[${link.label}]`;
+      } else {
+        let target = link.newtab ? ' target="_blank"' : '';
+        el = `<a href="${link.url}"${target}>[${link.label}]</a>`;
+      }
+      // Add separator if not last in this group of 4, else add line break
+      if ((i + 1) % 4 === 0 && i !== pub.links.length - 1) {
+        el += '<br>';
+      } else if (i !== pub.links.length - 1 && (i + 1) % 4 !== 0) {
+        el += ' | ';
+      }
+      return el;
+    }).join('');
+  }
 
-<!--Nature 2024-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://www.computationalimaging.org/publications/holographicar/" class="image fit">
-      <img src="{{ 'assets/images/nature2024/teaser.jpeg' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Full-Colour 3D Holographic Augmented-Reality Displays with Metasurface Waveguides
-      </font>
-      <br>
-      <i>
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://gunyeal.github.io/">Gun-Yeal Lee</a>*,
-        <u>Suyeon Choi</u>,
-        <a href="https://bchao1.github.io/">Brian Chao</a>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Nature (2024) 
-      <br><br>
-      <a href="https://www.nature.com/articles/s41586-024-07386-0"> [Article] </a> | <a href="https://www.computationalimaging.org/publications/holographicar/">[Project Page]</a> | <a href="https://github.com/computational-imaging/holographic-AR-glasses">[Code]</a>
-    </div>
-    <!-- <div class="2u 6u$(mobile)">
-      Featured in:
-      <a href="https://engineering.stanford.edu/magazine/ai-and-holography-bring-3d-augmented-reality-regular-glasses" class="image fit">
-        <img src="{{ 'assets/images/stanford_news.jpeg' | relative_url }}" alt=""/>
-      </a>
-    </div> -->
-  </div>
-
-<!--SIGGRAPH 2024-->
- <div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="http://www.computationalimaging.org/publications/holographic-parallax" class="image fit">
-      <img src="{{ 'assets/images/SIG2024/hp_teaser.gif' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font size=4 class='avenir-bold-title' >
-        Holographic Parallax Improves 3D Perceptual Realism
-      </font>
-      <br>
-      <i>
-        <a href="https://dongyeon93.github.io/">Dongyeon Kim</a>*,
-        <a href="https://nseungwoo.github.io/">Seung-Woo Nam</a>*,
-        <u>Suyeon Choi</u>*,
-        Jong-Mo Seo,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>,
-        Yoonchan Jeong
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2024 & <br> <span font-style="normal">SIGGRAPH 2024 E-tech 
-      <br><br>
-      <a href="https://arxiv.org/pdf/2404.11810.pdf"> [Technical Paper & Supplement] </a> | <a href="https://www.computationalimaging.org/publications/holographic-parallax">[Project Page]</a>  | <a href="https://dl.acm.org/doi/10.1145/3641517.3664386">[Extended Abstract] </a>
-    </div>
-  </div> 
-
-  <!-- OL 2023 -->
-   <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="https://opg.optica.org/ol/fulltext.cfm?uri=ol-48-15-4041&id=535470" class="image fit">
-        <video style="font-family: inherit; font-size: inherit; width: 100%; height: 60%; object-fit: cover;" autoplay="autoplay" loop="loop" muted="" playsinline>
-          <source src="assets/images/OL2023/teaser.mp4" type="video/mp4" />
-        </video>
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        High Brightness Holographic Projection
-      </font>
-      <br>
-      <i>
-        <a href="https://bchao1.github.io/">Brian Chao</a>,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <u>Suyeon Choi</u>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Optics Letters (2023) </span>
-      <br><br>
-      <a href="https://opg.optica.org/ol/fulltext.cfm?uri=ol-48-15-4041&id=535470"> [Paper] </a>
-    </div>
-
-  </div> 
-
-<!--SIGGRAPH 2022-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="http://www.computationalimaging.org/publications/time-multiplexed-neural-holography/" class="image fit">
-      <img src="{{ 'assets/images/SIG2022/tmnh_teaser.gif' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Time-multiplexed Neural Holography: A Flexible Framework for Holographic Near-eye Displays with Fast Heavily-quantized Spatial Light Modulators
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>*,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://www.cs.cmu.edu/~motoole2/">Matthew O'Toole</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2022 & </span> <br> <span font-style="normal">SIGGRAPH 2023 E-tech (w/ <a href="https://bchao1.github.io/">Brian Chao</a>)
-      <br><br>
-      <a href="https://drive.google.com/file/d/1n8xSdHgW0D5G5HhwSKrqCy1iztAcDHgX/view?usp=sharing"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1n9hdLq1xvur4I_OkGNyFgoKHGDZcMxcE/view"> [Supplement] </a> |
-      <a href="https://www.computationalimaging.org/publications/time-multiplexed-neural-holography/">[Project Page]</a> | <a href="https://dl.acm.org/doi/10.1145/3588037.3595395">[Extended Abstract] </a> | <a href="https://github.com/computational-imaging/time-multiplexed-neural-holography">[Code]</a>
-    </div>
-  </div>
-
-  <!--10. Thin Holographic VR 2022-->
-   <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/holographic-glasses" class="image fit"><img src="{{ 'assets/images/SIG2022/thinvr_teaser.png' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Holographic Glasses for Virtual Reality
-      </font>
-      <br>
-      <i>
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <u>Suyeon Choi</u>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        Ward Lopes,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2022</span>
-      <br><br>
-      <a href="/assets/files/siggraph2022_thinvr_main.pdf"> [Technical Paper] </a> | <a href="/assets/files/siggraph2022_thinvr_supp.pdf"> [Supplement] </a> |
-      <a href="https://research.nvidia.com/publication/2022-08_holographic-glasses-virtual-reality">[Project Page]</a>
-    </div>
-  </div> 
-
-  <!--9. NH 3D 2021-->
-  <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/neuralholography3d/" class="image fit">
-        <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-          <source src="assets/images/SIGAsia2021/ar.mp4" type="video/mp4" />
-        </video>
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Neural 3D Holography: Learning Accurate Wave Propagation Models for 3D Holographic Virtual and Augmented Reality Displays
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>*,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH Asia 2021</span>
-      <br><br>
-      <a href="/assets/files/ToG21.pdf"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1FNSXBYivIN9hqDUxzUIMgSFVKJKtFEOr/view?usp=sharing"> [Supplement] </a> |
-      <a href="http://www.computationalimaging.org/publications/neuralholography3d/">[Project Page]</a> | <a href="https://github.com/computational-imaging/neural-3d-holography">[Code]</a>
-    </div>
-    <!-- <div class="2u 6u$(mobile)">
-      Featured in:
-      <a href="https://news.stanford.edu/2021/11/12/using-ai-create-better-virtual-reality-experiences/" class="image fit">
-        <img src="{{ 'assets/images/stanford_news.jpeg' | relative_url }}" alt=""/>
-      </a>
-    </div> -->
-  </div>
-
-  <!-- 8. HOGD 2021 -->
-   <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/unfilteredholography/" class="image fit">
-        <img src="{{ 'assets/images/OL2021/SGD8.png' | relative_url }}" onmouseover="this.src='assets/images/OL2021/HOGD8.png';" onmouseout="this.src='assets/images/OL2021/SGD8.png';" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Unfiltered Holography: Optimizing High Diffraction Orders without Optical Filtering for Compact Holographic Displays
-      </font>
-      <br>
-      <i>
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <u>Suyeon Choi</u>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Optics Letters (2021) <font color=red>[Editor's Pick, 6th Top Downloads in Dec 2021]</font> </span>
-      <br><br>
-      <a href="https://www.osapublishing.org/ol/fulltext.cfm?uri=ol-46-23-5822&id=464968"> [Paper] </a> | <a href="https://opticapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Unfiltered_Holography_Optimizing_High_Diffraction_Orders_without_Optical_Filtering_for_Compact_Holographic_Displays_-_5523480_pdf/16913164"> [Supplement] </a> |
-      <a href="https://www.computationalimaging.org/publications/unfilteredholography/">[Project Page]</a>
-    </div>
-
-  </div> 
-
-
-  <!-- 7. sLED holography 2021 -->
-   <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/partiallycoherentholography/" class="image fit">
-        <img src="{{ 'assets/images/Sciadv/lion.png' | relative_url }}" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Speckle-free Holography with Partially Coherent Light Sources and Camera-in-the-loop Calibration
-      </font>
-      <br>
-      <i>
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>*,
-        <u>Suyeon Choi</u>*,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Science Advances (2021) </span>
-      <br><br>
-      <a href="https://www.science.org/doi/10.1126/sciadv.abg5040"> [Paper] </a> | <a href="http://www.computationalimaging.org/publications/partiallycoherentholography/">[Project Page]</a> | <a href="https://github.com/computational-imaging/partially_coherent_neural_holography"> [Code] </a>
-    </div>
-  </div> 
-
-  <!-- 6. MH 2020 -->
-   <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/michelsonholography/" class="image fit">
-        <img src="{{ 'assets/images/MH/teaser_double.png' | relative_url }}" onmouseover="this.src='assets/images/MH/teaser_single.png';" onmouseout="this.src='assets/images/MH/teaser_double.png';" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Optimizing image quality for holographic near-eye displays with Michelson Holography
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Optica (2021) <font color=red>[4th Top Downloads in Feb 2021]</font> & </span> <br>
-      <span font-style="normal">SPIE AR|VR|MR 2021</span>
-      <br><br>
-      <a href="https://www.osapublishing.org/optica/fulltext.cfm?uri=optica-8-2-143&id=446984"> [Paper] </a> | <a href="https://osapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Michelson_Holography_Dual-SLM_Holography_with_Camera-in-the-loop_Optimization_-_4929111_pdf/13360166"> [Supplement] </a> |
-      <a href="http://www.computationalimaging.org/publications/michelsonholography/">[Project Page]</a> |
-      <a href="https://spie.org/ar-vr-mr/presentation/High-quality-holographic-displays-using-double-SLMs-and-camera-in/11765-28">[Presentation]</a></div>
-      
-    </div> 
-
-    <!-- 5. SIGGRAPH Asia 2020 -->
+  return `
     <div class="row border-top" align="left">
       <div class="3u 12u$(mobile)">
-        <a href="http://www.computationalimaging.org/publications/neuralholography/" class="image fit">
-          <img src="{{ 'assets/images/SIGAsia2020/thumbnail.gif' | relative_url }}" alt="" /></a>
-        </div>
-        <div class="9u 12u$(mobile) " style="font-size:90%;">
-          <font class='avenir-bold-title' >
-            Neural Holography with Camera-in-the-loop Training
-          </font>
-          <br>
-          <i>
-            <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-            <u>Suyeon Choi</u>,
-            <a href="https://nitish.me/">Nitish Padmanaban</a>,
-            <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-          </i> <br>
-          <span font-style="normal">SIGGRAPH Asia 2020 & </span> <br> <span font-style="normal">SIGGRAPH 2020 E-tech (w/ <a href="http://j-kim.kr"><a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a></a>) <br><br>
-
-            <a href="/assets/files/neural_holography_SIGAsia20.pdf"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1vay4xeg5iC7y8CLWR6nQEWe3mjBuqCWB/view"> [Supplement] </a> |
-            <a href="http://www.computationalimaging.org/publications/neuralholography/">[Project Page]</a> | <a href="https://github.com/computational-imaging/neural-holography">[Code] </a> <br> <a href="http://www.computationalimaging.org/wp-content/uploads/2020/08/NeuralHolography_SIGGRAPH_ETech_2020.pdf">[Extended Abstract] </a>|
-            <a href="https://www.youtube.com/watch?v=Az4FDIVY7-w&feature=emb_logo">[Video (3 min </a> / <a href="https://www.youtube.com/watch?v=ZMl9PdrU1mE">15 mins</a>)]
-          </div>
-        </div>
-
-        <!-- 4. TVCG 2020 -->
-         <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1117/12.2525055" class="image fit"><img src="{{ 'assets/images/tvcg2020/thumbnail.png' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' size=5 >
-              Volumetric Head-Mounted Display with Locally Adaptive Focal Blocks
-            </font>
-            <br>
-            <i>
-              Dongheon Yoo*,
-              <a href="http://sleehub.com">Seungjae Lee</a>*,
-              Youngjin Jo,
-              Jaebum Cho,
-              <u>Suyeon Choi</u>,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal"> IEEE Transactions on Visualization and Computer Graphics (TVCG) (2020) </span>
-            & <br> <span font-style="normal">SPIE Photonics West Optical Design Challenge 2019 <font color=red>(2nd Prize)</font></span>
-            <br><br>
-            <a href="https://doi.org/10.1117/12.2525055">TVCG</a> : <a href="./assets/files/tvcg2020.pdf">[Paper]</a> <br>
-            <a href="https://doi.org/10.1117/12.2525055">Optical Design Challenge</a>:
-            <a href="./assets/files/spie-odc-2019.pdf">[Paper]</a> |
-            <a href="./assets/files/citation-11040_.bib">[BibTex]</a>
-          </div>
-        </div> 
-
-        <!-- 3. siggraph asia 2019 -->
-         <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1145/3355089.3356577" class="image fit"><img src="{{ 'assets/images/tomographic-projector/thumbnail.png' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' color="black">
-              Tomographic Projector: Large Scale Volumetric Display with Uniform Viewing Experiences
-            </font>
-            <br>
-            <i>
-              Youngjin Jo*,
-              <a href="http://sleehub.com">Seungjae Lee</a>*,
-              Dongheon Yoo,
-              <u>Suyeon Choi</u>,
-              Dongyeon Kim,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal">SIGGRAPH Asia 2019 </span>
-            <br><br>
-            <a href="./assets/files/ToG19.pdf">[Technical Paper]</a> |
-            <a href="https://dl.acm.org/action/downloadSupplement?doi=10.1145%2F3355089.3356577&file=a215-jo.zip">[Supplement]</a>
-
-
-          </div>
-        </div> 
-
-        <!-- 2. OE 2019 Optimal Binary -->
-         <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1364/OE.27.024362" class="image fit"><img src="{{ 'assets/images/Non-convex/proposed_ani.gif' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' color="black">
-              Optimal Binary Representation via Non-convex Optimization on Tomographic Displays
-            </font>
-            <br>
-            <i>
-              <u>Suyeon Choi</u>,
-              <a href="http://sleehub.com">Seungjae Lee</a>,
-              Youngjin Jo, Dongheon Yoo, Dongyeon Kim,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal">Optics Express (2019)</span>
-            <br><br>
-            <a href="./assets/files/oe-27-17-24362.pdf">[Paper]</a> |
-            <a href="https://github.com/choisuyeon/optimal-binary-representation-via-non-convex-optimization-on-tomographic-displays"> [Code] </a>
-          </div>
-        </div> 
-
-
-
-  </script>
-
-
-
-
-
-
-
-<script id="pubs_selected">
-
-
-  <!--Nature Photonics 2025-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://www.computationalimaging.org/publications/synthetic-aperture-waveguide-holography/" class="image fit">
-      <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-        <source src="assets/images/np2025/teaser.mp4" type="video/mp4" />
-      </video>
-    </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Synthetic Aperture Waveguide Holography for Compact MR Displays with Large Etendue
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>*,
-      Changwon Jang*,
-      Douglas Lanman,
-      <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-    </i> <br>
-    <span font-style="normal">Nature Photonics (2025)</span>
-    <br><br>
-    <a href="https://www.nature.com/articles/s41566-025-01718-w" target="_blank"> [Article] </a> | 
-    <a href="https://www.computationalimaging.org/publications/synthetic-aperture-waveguide-holography/">[Project Page]</a> | 
-    <a href="">[Code (Coming Soon)]</a> 
-  </div>
-</div>
-
-  <!--SIGGRAPH 2025-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://bchao1.github.io/gaussian-wave-splatting/" class="image fit">
-      <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-        <source src="assets/images/SIG2025/garden_nvs_focal_stack.mp4" type="video/mp4" />
-      </video>
-    </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Gaussian Wave Splatting for Computer-Generated Holography
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>*,
-      <a href="https://bchao1.github.io/">Brian Chao</a>*,
-      Jackie Yang,
-      <a href="https://manugopa.github.io">Manu Gopakumar</a>,
-      <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-    </i> <br>
-    <span font-style="normal">SIGGRAPH 2025</span>
-    <br><br>
-    <a href="https://drive.google.com/file/d/15FzKc1lYe9VrmBNSl7fvPlzd5fAlsFg3/view?usp=sharing" target="_blank"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/15Icq4NgdBqc56LZ_qsRCJ_eiwAqJQ49Y/view?usp=sharing" target="_blank"> [Supplement] </a> |
-    <a href="https://bchao1.github.io/gaussian-wave-splatting/">[Project Page]</a> | <a href="http://arxiv.org/abs/2505.06582" target="_blank">[Arxiv]</a> | <a href="">[Code (Coming Soon)]</a> 
-  </div>
-</div>
-
-
-
-<!--Dissertation-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://searchworks.stanford.edu/view/in00000166958" class="image fit">
-        <img src="{{ 'assets/images/Thesis/thesis.png' | relative_url }}" /> 
-      </a>
-  </div>
-  <div class="9u 12u$(mobile)" style="font-size:90%;">
-    <font class='avenir-bold-title' >
-      Design of Holographic Display Systems based on Artificial Intelligence
-    </font>
-    <br>
-    <i>
-      <u>Suyeon Choi</u>
-    </i> <br>
-    <span font-style="normal">Ph.D. Dissertation, Stanford University, 2024 <font color=red>(Awarded "ACM SIGGRAPH Outstanding Dissertation Honorable Mention")</font> </span> 
-
-    
-
-    <br><br>
-    <a href="https://searchworks.stanford.edu/view/in00000166958"> [Dissertation] </a>
-  </div>
-</div>
-
-
-<!--Nature 2024-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="https://www.computationalimaging.org/publications/holographicar/" class="image fit">
-      <img src="{{ 'assets/images/nature2024/teaser.jpeg' | relative_url }}" alt="" /></a>
+        <a href="${pub.links && pub.links[0] && pub.links[0].url ? pub.links[0].url : '#'}" class="image fit">
+          ${mediaHtml}
+        </a>
+      </div>
+      <div class="9u 12u$(mobile)" style="font-size:90%;">
+        <font class='avenir-bold-title'>${pub.title}</font>
+        <br>
+        <i>${pub.authorsHTML}</i> <br>
+        <span font-style="normal">${pub.venue}</span>
+        <br><br>
+        ${linksHtml}
+      </div>
     </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Full-Colour 3D Holographic Augmented-Reality Displays with Metasurface Waveguides
-      </font>
-      <br>
-      <i>
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://gunyeal.github.io/">Gun-Yeal Lee</a>*,
-        <u>Suyeon Choi</u>,
-        <a href="https://bchao1.github.io/">Brian Chao</a>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Nature (2024) 
-      <br><br>
-      <a href="https://www.nature.com/articles/s41586-024-07386-0"> [Article] </a> | <a href="https://www.computationalimaging.org/publications/holographicar/">[Project Page]</a> | <a href="https://github.com/computational-imaging/holographic-AR-glasses">[Code]</a>
-    </div>
-    <!-- <div class="2u 6u$(mobile)">
-      Featured in:
-      <a href="https://engineering.stanford.edu/magazine/ai-and-holography-bring-3d-augmented-reality-regular-glasses" class="image fit">
-        <img src="{{ 'assets/images/stanford_news.jpeg' | relative_url }}" alt=""/>
-      </a>
-    </div> -->
-  </div>
+  `;
+}
 
-<!--SIGGRAPH 2024-->
-<!--
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="http://www.computationalimaging.org/publications/holographic-parallax" class="image fit">
-      <img src="{{ 'assets/images/SIG2024/hp_teaser.gif' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font size=4 class='avenir-bold-title' >
-        Holographic Parallax Improves 3D Perceptual Realism
-      </font>
-      <br>
-      <i>
-        <a href="https://dongyeon93.github.io/">Dongyeon Kim</a>*,
-        <a href="https://nseungwoo.github.io/">Seung-Woo Nam</a>*,
-        <u>Suyeon Choi</u>*,
-        Jong-Mo Seo,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>,
-        Yoonchan Jeong
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2024 & <br> <span font-style="normal">SIGGRAPH 2024 E-tech 
-      <br><br>
-      <a href="https://arxiv.org/pdf/2404.11810.pdf"> [Technical Paper & Supplement] </a> | <a href="https://www.computationalimaging.org/publications/holographic-parallax">[Project Page]</a>  | <a href="https://dl.acm.org/doi/10.1145/3641517.3664386">[Extended Abstract] </a>
-    </div>
-  </div> -->
+function renderPublications(showType) {
+  let html = '';
+  publications.forEach(pub => {
+    if (pub.show.includes(showType)) {
+      html += renderPub(pub);
+    }
+  });
+  return html;
+}
 
-<!--SIGGRAPH 2022-->
-<div class="row border-top" align="left">
-  <div class="3u 12u$(mobile)">
-    <a href="http://www.computationalimaging.org/publications/time-multiplexed-neural-holography/" class="image fit">
-      <img src="{{ 'assets/images/SIG2022/tmnh_teaser.gif' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Time-multiplexed Neural Holography: A Flexible Framework for Holographic Near-eye Displays with Fast Heavily-quantized Spatial Light Modulators
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>*,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://www.cs.cmu.edu/~motoole2/">Matthew O'Toole</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2022 & </span> <br> <span font-style="normal">SIGGRAPH 2023 E-tech (w/ <a href="https://bchao1.github.io/">Brian Chao</a>)
-      <br><br>
-      <a href="https://drive.google.com/file/d/1n8xSdHgW0D5G5HhwSKrqCy1iztAcDHgX/view?usp=sharing"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1n9hdLq1xvur4I_OkGNyFgoKHGDZcMxcE/view"> [Supplement] </a> |
-      <a href="https://www.computationalimaging.org/publications/time-multiplexed-neural-holography/">[Project Page]</a> | <a href="https://dl.acm.org/doi/10.1145/3588037.3595395">[Extended Abstract] </a> | <a href="https://github.com/computational-imaging/time-multiplexed-neural-holography">[Code]</a>
-    </div>
-  </div>
+document.addEventListener('DOMContentLoaded', function () {
+  // Defensive: ensure the #pubs and toggles exist
+  var pubsDiv = document.getElementById('pubs');
+  var sel0 = document.getElementById('selected0');
+  var sel1 = document.getElementById('selected1');
+  if (!pubsDiv || !sel0 || !sel1) {
+    // If you're debugging, log to console what is missing
+    if (!pubsDiv) console.error('No element with id "pubs" found in DOM.');
+    if (!sel0) console.error('No element with id "selected0" found in DOM.');
+    if (!sel1) console.error('No element with id "selected1" found in DOM.');
+    return;
+  }
 
-  <!--10. Thin Holographic VR 2022 -->
-  <!--
- <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/holographic-glasses" class="image fit"><img src="{{ 'assets/images/SIG2022/thinvr_teaser.png' | relative_url }}" alt="" /></a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Holographic Glasses for Virtual Reality
-      </font>
-      <br>
-      <i>
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <u>Suyeon Choi</u>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        Ward Lopes,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH 2022</span>
-      <br><br>
-      <a href="/assets/files/siggraph2022_thinvr_main.pdf"> [Technical Paper] </a> | <a href="/assets/files/siggraph2022_thinvr_supp.pdf"> [Supplement] </a> |
-      <a href="https://research.nvidia.com/publication/2022-08_holographic-glasses-virtual-reality">[Project Page]</a>
-    </div>
-  </div> -->
+  function showPubs(idx) {
+    // 0 for 'selected', 1 for 'all'
+    const showType = idx === 0 ? 'selected' : 'full';
+    pubsDiv.innerHTML = renderPublications(showType);
+    // Selected/All toggle UI feedback
+    sel0.style.fontWeight = (idx === 0) ? 'bold' : 'normal';
+    sel1.style.fontWeight = (idx !== 0) ? 'bold' : 'normal';
+  }
 
-  <!--9. NH 3D 2021-->
-  <!-- <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/neuralholography3d/" class="image fit">
-        <video style="font-family: inherit; font-size: inherit; width: 100%;" autoplay="autoplay" loop="loop" muted="" playsinline>
-          <source src="assets/images/SIGAsia2021/ar.mp4" type="video/mp4" />
-        </video>
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Neural 3D Holography: Learning Accurate Wave Propagation Models for 3D Holographic Virtual and Augmented Reality Displays
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>*,
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>*,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">SIGGRAPH Asia 2021</span>
-      <br><br>
-      <a href="/assets/files/ToG21.pdf"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1FNSXBYivIN9hqDUxzUIMgSFVKJKtFEOr/view?usp=sharing"> [Supplement] </a> |
-      <a href="http://www.computationalimaging.org/publications/neuralholography3d/">[Project Page]</a> | <a href="https://github.com/computational-imaging/neural-3d-holography">[Code]</a>
-    </div>
-  </div>-->
-
-  <!-- 8. HOGD 2021 -->
-  <!-- <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/unfilteredholography/" class="image fit">
-        <img src="{{ 'assets/images/OL2021/SGD8.png' | relative_url }}" onmouseover="this.src='assets/images/OL2021/HOGD8.png';" onmouseout="this.src='assets/images/OL2021/SGD8.png';" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Unfiltered Holography: Optimizing High Diffraction Orders without Optical Filtering for Compact Holographic Displays
-      </font>
-      <br>
-      <i>
-        <a href="https://manugopa.github.io/">Manu Gopakumar</a>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <u>Suyeon Choi</u>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Optics Letters (2021) <font color=red>[Editor's Pick, 6th Top Downloads in Dec 2021]</font> </span>
-      <br><br>
-      <a href="https://www.osapublishing.org/ol/fulltext.cfm?uri=ol-46-23-5822&id=464968"> [Paper] </a> | <a href="https://opticapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Unfiltered_Holography_Optimizing_High_Diffraction_Orders_without_Optical_Filtering_for_Compact_Holographic_Displays_-_5523480_pdf/16913164"> [Supplement] </a> |
-      <a href="https://www.computationalimaging.org/publications/unfilteredholography/">[Project Page]</a>
-    </div>
-
-  </div> -->
-
-
-  <!-- 7. sLED holography 2021 -->
-  <!-- <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/partiallycoherentholography/" class="image fit">
-        <img src="{{ 'assets/images/Sciadv/lion.png' | relative_url }}" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Speckle-free Holography with Partially Coherent Light Sources and Camera-in-the-loop Calibration
-      </font>
-      <br>
-      <i>
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>*,
-        <u>Suyeon Choi</u>*,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Science Advances (2021) </span>
-      <br><br>
-      <a href="https://www.science.org/doi/10.1126/sciadv.abg5040"> [Paper] </a> | <a href="http://www.computationalimaging.org/publications/partiallycoherentholography/">[Project Page]</a> | <a href="https://github.com/computational-imaging/partially_coherent_neural_holography"> [Code] </a>
-    </div>
-  </div> -->
-
-  <!-- 6. MH 2020 -->
-  <!-- <div class="row border-top" align="left">
-    <div class="3u 12u$(mobile)">
-      <a href="http://www.computationalimaging.org/publications/michelsonholography/" class="image fit">
-        <img src="{{ 'assets/images/MH/teaser_double.png' | relative_url }}" onmouseover="this.src='assets/images/MH/teaser_single.png';" onmouseout="this.src='assets/images/MH/teaser_double.png';" />
-      </a>
-    </div>
-    <div class="9u 12u$(mobile)" style="font-size:90%;">
-      <font class='avenir-bold-title' >
-        Optimizing image quality for holographic near-eye displays with Michelson Holography
-      </font>
-      <br>
-      <i>
-        <u>Suyeon Choi</u>,
-        <a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a>,
-        <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-        <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-      </i> <br>
-      <span font-style="normal">Optica (2021) <font color=red>[4th Top Downloads in Feb 2021]</font> & </span> <br>
-      <span font-style="normal">SPIE AR|VR|MR 2021</span>
-      <br><br>
-      <a href="https://www.osapublishing.org/optica/fulltext.cfm?uri=optica-8-2-143&id=446984"> [Paper] </a> | <a href="https://osapublishing.figshare.com/articles/journal_contribution/Supplementary_document_for_Michelson_Holography_Dual-SLM_Holography_with_Camera-in-the-loop_Optimization_-_4929111_pdf/13360166"> [Supplement] </a> |
-      <a href="http://www.computationalimaging.org/publications/michelsonholography/">[Project Page]</a> |
-      <a href="https://spie.org/ar-vr-mr/presentation/High-quality-holographic-displays-using-double-SLMs-and-camera-in/11765-28">[Presentation]</a></div>
-      
-    </div> -->
-
-    <!-- 5. SIGGRAPH Asia 2020 -->
-    <div class="row border-top" align="left">
-      <div class="3u 12u$(mobile)">
-        <a href="http://www.computationalimaging.org/publications/neuralholography/" class="image fit">
-          <img src="{{ 'assets/images/SIGAsia2020/thumbnail.gif' | relative_url }}" alt="" /></a>
-        </div>
-        <div class="9u 12u$(mobile) " style="font-size:90%;">
-          <font class='avenir-bold-title' >
-            Neural Holography with Camera-in-the-loop Training
-          </font>
-          <br>
-          <i>
-            <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a>,
-            <u>Suyeon Choi</u>,
-            <a href="https://nitish.me/">Nitish Padmanaban</a>,
-            <a href="http://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a>
-          </i> <br>
-          <span font-style="normal">SIGGRAPH Asia 2020 & </span> <br> <span font-style="normal">SIGGRAPH 2020 E-tech (w/ <a href="http://j-kim.kr"><a href="https://research.nvidia.com/person/jonghyun-kim">Jonghyun Kim</a></a>) <br><br>
-
-            <a href="/assets/files/neural_holography_SIGAsia20.pdf"> [Technical Paper] </a> | <a href="https://drive.google.com/file/d/1vay4xeg5iC7y8CLWR6nQEWe3mjBuqCWB/view"> [Supplement] </a> |
-            <a href="http://www.computationalimaging.org/publications/neuralholography/">[Project Page]</a> | <a href="https://github.com/computational-imaging/neural-holography">[Code] </a> <br> <a href="http://www.computationalimaging.org/wp-content/uploads/2020/08/NeuralHolography_SIGGRAPH_ETech_2020.pdf">[Extended Abstract] </a>|
-            <a href="https://www.youtube.com/watch?v=Az4FDIVY7-w&feature=emb_logo">[Video (3 min </a> / <a href="https://www.youtube.com/watch?v=ZMl9PdrU1mE">15 mins</a>)]
-          </div>
-        </div>
-
-        <!-- 4. TVCG 2020 -->
-        <!-- <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1117/12.2525055" class="image fit"><img src="{{ 'assets/images/tvcg2020/thumbnail.png' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' size=5 >
-              Volumetric Head-Mounted Display with Locally Adaptive Focal Blocks
-            </font>
-            <br>
-            <i>
-              Dongheon Yoo*,
-              <a href="http://sleehub.com">Seungjae Lee</a>*,
-              Youngjin Jo,
-              Jaebum Cho,
-              <u>Suyeon Choi</u>,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal"> IEEE Transactions on Visualization and Computer Graphics (TVCG) (2020) </span>
-            & <br> <span font-style="normal">SPIE Photonics West Optical Design Challenge 2019 <font color=red>(2nd Prize)</font></span>
-            <br><br>
-            <a href="https://doi.org/10.1117/12.2525055">TVCG</a> : <a href="./assets/files/tvcg2020.pdf">[Paper]</a> <br>
-            <a href="https://doi.org/10.1117/12.2525055">Optical Design Challenge</a>:
-            <a href="./assets/files/spie-odc-2019.pdf">[Paper]</a> |
-            <a href="./assets/files/citation-11040_.bib">[BibTex]</a>
-          </div>
-        </div> -->
-
-        <!-- 3. siggraph asia 2019 -->
-        <!-- <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1145/3355089.3356577" class="image fit"><img src="{{ 'assets/images/tomographic-projector/thumbnail.png' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' color="black">
-              Tomographic Projector: Large Scale Volumetric Display with Uniform Viewing Experiences
-            </font>
-            <br>
-            <i>
-              Youngjin Jo*,
-              <a href="http://sleehub.com">Seungjae Lee</a>*,
-              Dongheon Yoo,
-              <u>Suyeon Choi</u>,
-              Dongyeon Kim,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal">SIGGRAPH Asia 2019 </span>
-            <br><br>
-            <a href="./assets/files/ToG19.pdf">[Technical Paper]</a> |
-            <a href="https://dl.acm.org/action/downloadSupplement?doi=10.1145%2F3355089.3356577&file=a215-jo.zip">[Supplement]</a>
-
-
-          </div>
-        </div> -->
-
-        <!-- 2. OE 2019 Optimal Binary -->
-        <!-- <div class="row border-top" align="left">
-          <div class="3u 12u$(mobile)">
-            <a href="https://doi.org/10.1364/OE.27.024362" class="image fit"><img src="{{ 'assets/images/Non-convex/proposed_ani.gif' | relative_url }}" alt="" /></a>
-          </div>
-          <div class="9u 12u$(mobile)" style="font-size:90%;">
-
-            <font class='avenir-bold-title' color="black">
-              Optimal Binary Representation via Non-convex Optimization on Tomographic Displays
-            </font>
-            <br>
-            <i>
-              <u>Suyeon Choi</u>,
-              <a href="http://sleehub.com">Seungjae Lee</a>,
-              Youngjin Jo, Dongheon Yoo, Dongyeon Kim,
-              <a href="http://oeqelab.snu.ac.kr/PROF">Byoungho Lee</a>
-            </i> <br>
-            <span font-style="normal">Optics Express (2019)</span>
-            <br><br>
-            <a href="./assets/files/oe-27-17-24362.pdf">[Paper]</a> |
-            <a href="https://github.com/choisuyeon/optimal-binary-representation-via-non-convex-optimization-on-tomographic-displays"> [Code] </a>
-          </div>
-        </div> -->
-
-    </script>
-
-
-    <script src="/assets/js/main.js"></script>
-<script>showPubs(0);</script>
+  // Initial render
+  showPubs(0);
+  sel0.addEventListener('click', function(e){e.preventDefault(); showPubs(0);});
+  sel1.addEventListener('click', function(e){e.preventDefault(); showPubs(1);});
+});
+</script>
