@@ -19,7 +19,7 @@ project: true
     align-items: flex-start;
     margin: 0;
     line-height: 1.5;
-    font-size: 0.97em;
+    font-size: 0.92em;
     /* allow multiline wrapping inside the flex layout */
   }
   .news-date {
@@ -51,14 +51,34 @@ project: true
     font-size: 0.97em;
     color: #004563;
   }
-  /* Optionally add a little more top margin to News section on mobile screens */
+  /* Home row: image 25%, profile 35%, news 40% - desktop only */
+  @media (min-width: 737px) {
+    .home-section-padding.row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .home-section-padding.row > .3u {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .home-section-padding.row > .profile-col {
+      flex: 0 0 33% !important;
+      max-width: 33% !important;
+      width: 33% !important;
+    }
+    .home-section-padding.row > .news-col {
+      flex: 0 0 42% !important;
+      max-width: 42% !important;
+      width: 42% !important;
+    }
+  }
+  /* Mobile: let 12u$(mobile) handle full width - no flex overrides */
   @media (max-width: 736px) {
     .home-section-padding {
       padding-top: 18px;
       padding-bottom: 18px;
     }
     .news-date {
-      /* min-width: 90px; -- removed */
       padding-right: 0px;
       min-width: 70px;
       width: auto;
@@ -71,7 +91,7 @@ project: true
       <img src="{{ 'assets/images/profile2.jpg' | relative_url }}" alt="profile" style="border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);" />
     </a>
   </div>
-  <div class="3dot5u 12u$(mobile) profile-col profile-mobile-spacing" align="left" style="flex-basis: 29.17%; max-width: 29.17%;">
+  <div class="3dot5u 12u$(mobile) profile-col profile-mobile-spacing" align="left">
     <name-bold class="responsive-title">Suyeon Choi (최수연)</name-bold>
     <style>
       @media (max-width: 736px) {
@@ -81,12 +101,12 @@ project: true
       }
     </style>
     <br><br>
-      Assistant Professor, <br>
-      Department of <br> Computer Science and Engineering <br>
+      Assistant Professor <br>
+      Department of Computer Science and Engineering <br>
       Seoul National University <br><br>
       office: Rm 321 <a href="https://maps.app.goo.gl/aVB4D1mr2igmQqb98" target="_blank">Bldg 302</a> <br>
       email: suyeon.choi (at) snu.ac.kr
-      <!-- <a href="mailto:suyeon@stanford.edu" class="icon fa-envelope"><span class="label">Email</span></a> -->
+      <!-- <a href="mailto:suyeon.choi@snu.ac.kr" class="icon fa-envelope"><span class="label">Email</span></a> -->
       <br><br>
       <span style="font-size: 0.9em;">
         <a href="assets/files/Suyeon_Choi.pdf" target="_blank">[CV]</a> |
@@ -105,19 +125,7 @@ project: true
     }
   </style>
 
-  <div class="5dot5u 12u$(mobile) margin0 news-col" align="left" style="flex-basis: 45.83%; max-width: 45.83%;">
-    <style>
-      @media (max-width: 736px) {
-        .profile-col {
-          max-width: none !important;
-          flex-basis: none !important;
-        }
-        .news-col {
-          max-width: none !important;
-          flex-basis: none !important;
-        }
-      }
-    </style>
+  <div class="5dot5u 12u$(mobile) margin0 news-col" align="left">
     <br>
     <b><subtitle-bold>News</subtitle-bold></b>
     <div id="news-list"></div>

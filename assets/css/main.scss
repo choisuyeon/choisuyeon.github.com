@@ -7,6 +7,16 @@ header {
   color: black;
 }
 
+#header {
+  box-shadow: 2px 0 4px rgba(0, 56, 118, 0.06);
+}
+
+#nav ul hr {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
 h1, h2, h3, h4, strong {
   color: black;
 }
@@ -16,11 +26,11 @@ date{
 }
 font.avenir{
   color:black;
-  font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+  font-family: 'Avenir', 'Avenir Next', 'Helvetica Neue', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
 }
 font.avenir-bold-title{
   color:black;
-  font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+  font-family: 'Avenir', 'Avenir Next', 'Helvetica Neue', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
   // font-style: oblique;
   font-size: 130%;
   font-weight: bold;
@@ -28,19 +38,19 @@ font.avenir-bold-title{
 
 h33 {
   color:black;
-	font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+	font-family: 'Avenir', 'Avenir Next', 'Helvetica Neue', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
   font-size:14pt;
 }
 
 body {
   font: 16px/1.5 sans-serif;
-	font-family: 'Avenir', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
+	font-family: 'Avenir', 'Avenir Next', 'Helvetica Neue', 'Montserrat', 'Nunito Sans', 'Source Sans Pro', sans-serif;
   color: black;
   background-color: #FFFFFF
 }
 
 a {
-  color : #004563;
+  color : #003876;
 }
 
 a.aboutme {

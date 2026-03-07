@@ -1,0 +1,164 @@
+---
+title: Teaching
+auto-header: none
+icon: fa-chalkboard-teacher
+order: 5
+project: true
+---
+
+<style>
+  /* Teaching - match Publications spacing, reduce gap from previous section */
+  #publications + #teaching {
+    margin-top: -2.1em !important;
+  }
+  #teaching {
+    padding-bottom: 0.2em !important;
+  }
+  #teaching .container {
+    text-align: left;
+  }
+  #teaching-pane .row.padding-top10 {
+    /* padding-top: 4px !important; */
+  }
+  #teaching-pane a {
+    border-bottom: none !important;
+  }
+  #teaching-pane .teaching-card-text {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+  #teaching-pane .teaching-card {
+    border-radius: 0.7rem;
+    border: 1px solid #b8c4dc;
+    margin-top: 6px;
+    margin-bottom: 50px;
+    transition: box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  #teaching-pane .teaching-card:hover {
+    box-shadow: 0 0 0 1px rgba(114, 98, 98, 0.08), 0 8px 30px rgb(0 0 0 / 0.12);
+  }
+  #teaching-pane .teaching-card .card-click-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-decoration: none;
+  }
+  #teaching-pane .teaching-card .card-link-exception {
+    position: relative;
+    z-index: 2;
+  }
+  #teaching-pane .teaching-card .row {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+    position: relative;
+  }
+  /* Image fills full card height - absolute to card edges */
+  #teaching-pane .teaching-card .row > *:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+  }
+  #teaching-pane .teaching-card .row > *:last-child {
+    margin-left: 25%;
+    padding-left: 40px;
+  }
+  #teaching-pane .teaching-card .image.fit {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: 0.7rem 0 0 0.7rem;
+  }
+  #teaching-pane .teaching-card .image.fit img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    vertical-align: bottom;
+    border-radius: 0;
+  }
+  /* Mobile: stacked layout, image fills top rounded corners */
+  @media screen and (max-width: 736px) {
+    #teaching-pane .teaching-card .row {
+      display: flex;
+      flex-direction: column;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    #teaching-pane .teaching-card .row > *:first-child {
+      position: relative !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: -15px 0 0 0 !important;
+      order: 1;
+    }
+    #teaching-pane .teaching-card .row > *:last-child {
+      margin: 0 !important;
+      padding: 1em !important;
+      order: 2;
+    }
+    #teaching-pane .teaching-card-text {
+      padding: 1em !important;
+    }
+    #teaching-pane .teaching-card .image.fit {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 0.7rem 0.7rem 0 0;
+    }
+    #teaching-pane .teaching-card .image.fit img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
+
+<div id="teaching-pane">
+  <div class="row padding-top10" align="left">
+    <div class="12u 12u(mobile)">
+      <title-bold>Teaching</title-bold>
+    </div>
+  </div>
+
+  <article class="teaching-card">
+    <a href="https://reality.snu.ac.kr/class/computational-imaging" target="_blank" rel="noopener" class="card-click-overlay" aria-label="View course"></a>
+    <div class="row border-top" align="left">
+      <div class="3u 12u$(mobile)">
+        <span class="image fit">
+          <img src="https://engineering.stanford.edu/sites/default/files/styles/card_1900x950/public/media/image/resize_tfoe_wetzstein_0.jpg.webp?h=e4ba68eb&itok=EkGNOhMk" alt="Computational Imaging course teaser" loading="lazy" />
+        </span>
+      </div>
+      <div class="9u 12u$(mobile) teaching-card-text" style="font-size:90%;">
+        <font class="avenir-bold-title">4190.762: Topics in Computer Graphics – Computational Imaging</font>
+          <br>
+          <span style="font-style: normal;">Spring 2026</span>
+          <span style="font-style: normal;"> · </span>
+          <a href="https://en.snu.ac.kr" target="_blank" rel="noopener" class="card-link-exception">Seoul National University</a>
+          <br><br>
+          Inverse problems, computational cameras, differentiable optics, ...
+      </div>
+    </div>
+  </article>
+</div>
