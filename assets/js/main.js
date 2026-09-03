@@ -127,6 +127,19 @@ function showPubs(id) {
 					$('#headerToggle, #header, #main')
 						.css('transition', 'none');
 
+		// Resize: 736px 전환 시 header-visible 초기화 (slide-out ↔ desktop)
+				var resizeTimer, lastWidth = $window.width();
+				$window.on('resize', function() {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(function() {
+						var w = $window.width();
+						if ((lastWidth > 736 && w <= 736) || (lastWidth <= 736 && w > 736)) {
+							$body.removeClass('header-visible');
+						}
+						lastWidth = w;
+					}, 150);
+				});
+
 	});
 
 })(jQuery);
